@@ -13,6 +13,10 @@
     <context:component-scan base-package="com.medsocial.controller"/>
     <mvc:annotation-driven/>
     
+    <!-- Handles GET requests for /resources/** by efficiently serving static content in the ${webappRoot}/resources dir -->
+    <!-- when deployed to GAE, static files aren't routed through webapp at all, but this will work locally -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+    
     <!-- entity scanning, may need to turn this off for performance -->
     <bean class="com.googlecode.objectify.spring.ObjectifyFactoryBean" p:basePackage="com.medsocial.model" />
     

@@ -24,7 +24,7 @@
     </servlet>
     <servlet-mapping>
     	<servlet-name>medsocial</servlet-name>
-    	<url-pattern>/webapp/*</url-pattern>
+    	<url-pattern>/</url-pattern>
     </servlet-mapping>
     
 </web-app>
