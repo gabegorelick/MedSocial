@@ -11,7 +11,7 @@ public class HomeController {
 	
 	@RequestMapping
 	public ModelAndView home() {
-		ModelAndView mav = new ModelAndView("/home");
+		ModelAndView mav = new ModelAndView("home");
 		mav.addObject("userName", SecurityContextHolder.getContext().getAuthentication().getName());
 		
 		return mav;
