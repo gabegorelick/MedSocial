@@ -3,8 +3,18 @@
 	<classpathentry kind="src" output="target/classes" path="src/main/java"/>
 	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+		<accessrules>
+			<accessrule kind="nonaccessible" pattern="java.util.logging.*"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<accessrules>
+			<accessrule kind="nonaccessible" pattern="org/apache/log4j/**"/>
+			<accessrule kind="discouraged" pattern="ch/qos/logback/**"/>
+			<accessrule kind="nonaccessible" pattern="org/apache/commons/logging/**"/>
+		</accessrules>
+	</classpathentry>
 	<classpathentry kind="lib" path="/home/gabe/Software/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.5.5.r37v201110112027/appengine-java-sdk-1.5.5/lib/shared/jsp/repackaged-appengine-tomcat-juli-6.0.29.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="file:/home/gabe/Software/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.5.5.r37v201110112027/appengine-java-sdk-1.5.5/docs/javadoc/"/>
