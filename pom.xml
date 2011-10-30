@@ -18,6 +18,11 @@
             <name>Objectify Maven Repository</name>
             <url>http://objectify-appengine.googlecode.com/svn/maven</url>
         </repository>
+        <repository>
+			<id>repository.springframework.milestone</id>
+			<name>Spring Framework Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+		</repository>
     </repositories>
 
     <dependencies>
@@ -29,7 +34,8 @@
     	<dependency>
     		<groupId>org.springframework</groupId>
     		<artifactId>spring-webmvc</artifactId>
-    		<version>3.0.6.RELEASE</version>
+    		<!-- need 3.1 for cache API -->
+    		<version>3.1.0.RC1</version>
     	</dependency>
     	<dependency>
     		<groupId>org.springframework.security</groupId>

@@ -11,7 +11,7 @@
 		<a href="${loginUrl}">Please login</a>
 	</c:when>
 	<c:otherwise>
-		You are logged in
+		You are logged in as <c:out value="${user}"/>
 	</c:otherwise>
 </c:choose>
 

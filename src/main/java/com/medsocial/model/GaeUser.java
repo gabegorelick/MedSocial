@@ -4,12 +4,9 @@ import java.io.Serializable;
 import java.util.EnumSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Unindexed;
 import com.medsocial.security.AppRole;
 
 @Entity
@@ -20,25 +17,21 @@ public class GaeUser implements Serializable {
 	@Id
 	private String userId;
 	
-	@Unindexed
 	private String email;
 	
-	@Unindexed
 	private String nickname;
 	
-	@Unindexed
 	private String forename;
 	
-	@Unindexed
 	private String surname;
 	
-	@Unindexed
 	private Set<AppRole> authorities;
 	
 	private boolean enabled;
 	
 	public GaeUser() {
 		authorities = EnumSet.of(AppRole.NEW_USER);
+		enabled = true;
 	}
 	
 	public String getUserId() {

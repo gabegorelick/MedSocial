@@ -3,6 +3,7 @@ package com.medsocial.security;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
@@ -15,7 +16,8 @@ public class GoogleAccountsAuthenticationProvider implements AuthenticationProvi
 	private static final Logger logger = LoggerFactory.getLogger(GoogleAccountsAuthenticationProvider.class);
 	
 	private UserRegistry userRegistry;
-	 
+		
+	@Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         User googleUser = (User) authentication.getPrincipal();
  
@@ -30,15 +32,15 @@ public class GoogleAccountsAuthenticationProvider implements AuthenticationProvi
             user.setNickname(googleUser.getNickname());
             user.setEmail(googleUser.getEmail());
         }
- 
-        // TODO check for disabled accounts
-//        if (!user.isEnabled()) {
-//            throw new DisabledException("Account is disabled");
-//        }
+        
+        if (!user.isEnabled()) {
+            throw new DisabledException("Account is disabled");
+        }
  
         return new GaeUserAuthentication(user, authentication.getDetails());
     }
  
+    @Override
     public final boolean supports(Class<?> authentication) {
         return PreAuthenticatedAuthenticationToken.class.isAssignableFrom(authentication);
     }
@@ -46,4 +48,5 @@ public class GoogleAccountsAuthenticationProvider implements AuthenticationProvi
     public void setUserRegistry(UserRegistry userRegistry) {
         this.userRegistry = userRegistry;
     }
+    
 }

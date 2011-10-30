@@ -24,6 +24,7 @@ import org.springframework.web.filter.GenericFilterBean;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.medsocial.model.GaeUser;
 
 public class GaeAuthenticationFilter extends GenericFilterBean {
 
@@ -36,44 +37,65 @@ public class GaeAuthenticationFilter extends GenericFilterBean {
 	private AuthenticationFailureHandler failureHandler = new SimpleUrlAuthenticationFailureHandler();
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
-	ServletException {
-
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-		if (authentication == null) {			
-			// User isn't authenticated. Check if there is a Google Accounts user
-			User googleUser = UserServiceFactory.getUserService().getCurrentUser();
-
-			if (googleUser != null) {
-				// User has returned after authenticating through GAE. Need to authenticate to Spring Security.
-				PreAuthenticatedAuthenticationToken token = new PreAuthenticatedAuthenticationToken(googleUser, null);
-				token.setDetails(ads.buildDetails(request));
-
-				try {
-					authentication = authenticationManager.authenticate(token);
-					
-					// Setup the security context
-					SecurityContextHolder.getContext().setAuthentication(authentication);
-					
-					// Send new users to the registration page.
-					if (authentication.getAuthorities().contains(AppRole.NEW_USER)) {
-						logger.debug("Redirecting new user to registration page");
-						
-						((HttpServletResponse) response).sendRedirect(REGISTRATION_URL);
-						return;
-					}
-				} catch (AuthenticationException e) {
-					// Authentication information was rejected by the authentication manager
-					failureHandler.onAuthenticationFailure((HttpServletRequest)request, (HttpServletResponse)response, e);
-					return;
-				}
-			}
-		}
-
-		chain.doFilter(request, response);
-	}
-
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	       User googleUser = UserServiceFactory.getUserService().getCurrentUser();
+	 
+	       if (authentication != null && !loggedInUserMatchesGaeUser(authentication, googleUser)) {
+	           SecurityContextHolder.clearContext();
+	           authentication = null;
+	           ((HttpServletRequest)request).getSession().invalidate();
+	       }
+	 
+	       if (authentication == null) {
+	           if (googleUser != null) {
+	               logger.debug("Currently logged in to GAE as user {}", googleUser);
+	               logger.debug("Authenticating to Spring Security");
+	               
+	               // User has returned after authenticating via GAE. Need to authenticate through Spring Security.
+	               PreAuthenticatedAuthenticationToken token = new PreAuthenticatedAuthenticationToken(googleUser, null);
+	               token.setDetails(ads.buildDetails((HttpServletRequest) request));
+	 
+	               try {
+	                   authentication = authenticationManager.authenticate(token);
+	                   SecurityContextHolder.getContext().setAuthentication(authentication);
+	 
+	                   if (authentication.getAuthorities().contains(AppRole.NEW_USER)) {
+	                       logger.debug("New user authenticated. Redirecting to registration page");
+	                       ((HttpServletResponse) response).sendRedirect(REGISTRATION_URL);
+	 
+	                       return;
+	                   }
+	 
+	               } catch (AuthenticationException e) {
+	                   failureHandler.onAuthenticationFailure((HttpServletRequest)request, (HttpServletResponse)response, e);
+	 
+	                   return;
+	               }
+	           }
+	       }
+	 
+	       chain.doFilter(request, response);
+	   }
+	 
+	   private boolean loggedInUserMatchesGaeUser(Authentication authentication, User googleUser) {
+	       assert authentication != null;
+	 
+	       if (googleUser == null) {
+	           // User has logged out of GAE but is still logged into application
+	           return false;
+	       }
+	 
+	       GaeUser gaeUser = (GaeUser) authentication.getPrincipal();
+	 
+	       if (!gaeUser.getEmail().equals(googleUser.getEmail())) {
+	           return false;
+	       }
+	 
+	       return true;
+	 
+	   }
+	 
 	public void setAuthenticationManager(AuthenticationManager authenticationManager) {
 		this.authenticationManager = authenticationManager;
 	}
