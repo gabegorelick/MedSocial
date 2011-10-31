@@ -84,16 +84,16 @@
               </div>
             </div>
             <div class="wrapper" style="top:41px;left:811px;">
-              <input type="button" id="button_1" class="component button" value="Home" style="width:61px;min-width:61px;height:28px;font-size:15.8px;">
+              <a href="/home">Home</a>
             </div>
             <div class="wrapper" style="top:39px;left:887px;">
-              <input type="button" id="button_2" class="component button" value="Logout" style="width:60px;min-width:60px;height:28px;font-size:15.8px;">
+              <a href="/logout">Logout</a>
             </div>
             <div class="wrapper" style="top:84px;left:655px;">
               <h2 id="heading_4" class="component heading">Prescriptions</h2>
             </div>
             <div class="wrapper" style="top:114px;left:655px;">
-              <input type="button" id="button_3" class="component button" value="Edit Prescriptions" style="width:190px;min-width:190px;">
+              <a href="/doctor/${userId}/prescriptions/edit">Edit Prescriptions</a>
               <span class="marker"><img id="button_3_action" src="/resources/images/icons/action_small.png"></span>
             </div>
             <div class="wrapper" style="top:128px;left:235px;">
