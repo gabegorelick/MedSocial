@@ -24,7 +24,7 @@ public class LoginController {
 		mav.addObject("loginUrl", loginUrl);
 		
 		if (principal == null) {
-			response.sendRedirect(loginUrl);		
+			response.sendRedirect(loginUrl);
 		} else {
 			response.sendRedirect("/home");
 		}

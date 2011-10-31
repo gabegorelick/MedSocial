@@ -1,3 +1,7 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -87,7 +91,7 @@
               <input type="button" id="button_1" class="component button" value="Home" style="width:61px;min-width:61px;height:28px;font-size:15.8px;">
             </div>
             <div class="wrapper" style="top:39px;left:887px;">
-              <input type="button" id="button_2" class="component button" value="Logout" style="width:60px;min-width:60px;height:28px;font-size:15.8px;">
+              <a href="/logout">Logout</a>
             </div>
             <div class="wrapper" style="top:84px;left:655px;">
               <h2 id="heading_4" class="component heading">Prescriptions</h2>
