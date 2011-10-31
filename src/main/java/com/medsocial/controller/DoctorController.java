@@ -7,5 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/doctor")
 public class DoctorController {
 
+	@RequestMapping({"", "/home"})
+	public String home() {
+		return "doctorMain";
+	}
 	
+	@RequestMapping("/{userId}/prescriptions/edit")
+	public String editPrescription() {
+		return "editPrescription";
+	}
 }
