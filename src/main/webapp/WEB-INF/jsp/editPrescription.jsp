@@ -4,17 +4,17 @@
     <title>Home</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="a HTML prototype page created with App Sketcher">
-    <link href="styles/default/jquery-ui.css" rel="stylesheet" type="text/css">
-    <link href="styles/page.css" rel="stylesheet" type="text/css">
-    <script language="javascript" src="scripts/jquery.min.js" type="text/javascript"></script>
-    <script language="javascript" src="scripts/jquery-ui.min.js" type="text/javascript"></script>
-    <!--[if IE]><script language="javascript" src="scripts/excanvas.min.js" type="text/javascript"></script><![endif]-->
-    <script language="javascript" src="scripts/jquery.jqplot.min.js" type="text/javascript"></script>
-    <script language="javascript" src="scripts/jqplot.barRenderer.min.js" type="text/javascript"></script>
-    <script language="javascript" src="scripts/jqplot.categoryAxisRenderer.min.js" type="text/javascript"></script>
-    <script language="javascript" src="scripts/jqplot.pieRenderer.min.js" type="text/javascript"></script>
-    <script language="javascript" src="scripts/jquery.tools.min.js" type="text/javascript"></script>
-    <script language="javascript" src="scripts/page.js" type="text/javascript"></script>
+    <link href="/resources/styles/default/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="/resources/styles/page.css" rel="stylesheet" type="text/css">
+    <script language="javascript" src="/resources/scripts/jquery.min.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jquery-ui.min.js" type="text/javascript"></script>
+    <!--[if IE]><script language="javascript" src="/resources/scripts/excanvas.min.js" type="text/javascript"></script><![endif]-->
+    <script language="javascript" src="/resources/scripts/jquery.jqplot.min.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jqplot.barRenderer.min.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jqplot.categoryAxisRenderer.min.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jqplot.pieRenderer.min.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jquery.tools.min.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/page.js" type="text/javascript"></script>
     <style type="text/css">
       .tooltip {display:none;color:black;background-color:#ffa;border:1px solid #cc9;max-width: 300px; padding:3px;font-size:13px;-moz-box-shadow: 2px 2px 11px #666;-webkit-box-shadow: 2px 2px 11px #666;}
       #v_checkbox_bar_1 .wrapper {margin-top:17px;}
@@ -23,7 +23,7 @@
       $(function() {
         $(".date_field").datepicker({
           showOn: "button",
-          buttonImage: "images/icons/calendar.png",
+          buttonImage: "/resources/images/icons/calendar.png",
           buttonImageOnly: true
         });
 
@@ -56,10 +56,10 @@
             <div class="wrapper" style="top:41px;right:32px;">
               <span id="button_bar_1" class="component button_bar">
                 <div class="wrapper">
-                  <input type="button" id="button_1" class="component button" value="Home">
+                  <a href="/home">Home</a>
                 </div>
                 <div class="wrapper">
-                  <input type="button" id="button_2" class="component button" value="Logout">
+                  <a href="/logout">Logout</a>
                 </div>
               </span>
             </div>
@@ -161,6 +161,6 @@
         </div>
       </div>
     </div>
-    <span style="position: fixed; top: 2px; right: 2px;"><a href="site.map.html"><img src="images/icons/sitemap.png" title="Site Map" width="23" height="23" border="0"></a></span>
+    <span style="position: fixed; top: 2px; right: 2px;"><a href="site.map.html"><img src="/resources/images/icons/sitemap.png" title="Site Map" width="23" height="23" border="0"></a></span>
   </body>
 </html>
