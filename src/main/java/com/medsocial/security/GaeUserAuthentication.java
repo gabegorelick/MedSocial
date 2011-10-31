@@ -9,7 +9,10 @@ import org.springframework.security.core.GrantedAuthority;
 import com.medsocial.model.GaeUser;
 
 public class GaeUserAuthentication implements Authentication {
-	   private final GaeUser principal;
+	
+	private static final long serialVersionUID = 1617533952291603110L;
+	
+	private final GaeUser principal;
 	   private final Object details;
 	   private boolean authenticated;
 	 
