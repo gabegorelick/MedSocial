@@ -94,7 +94,6 @@
             </div>
             <div class="wrapper" style="top:114px;left:655px;">
               <a href="/doctor/${userId}/prescriptions/edit">Edit Prescriptions</a>
-              <span class="marker"><img id="button_3_action" src="/resources/images/icons/action_small.png"></span>
             </div>
             <div class="wrapper" style="top:128px;left:235px;">
               <img id="image_3" class="component image" src="/resources/images/sample.png" style="width:65px;min-width:65px;height:62px;">
