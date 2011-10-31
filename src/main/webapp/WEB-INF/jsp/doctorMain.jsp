@@ -6,8 +6,8 @@
     <meta name="description" content="a HTML prototype page created with App Sketcher">
     <link href="/resources/styles/default/jquery-ui.css" rel="stylesheet" type="text/css">
     <link href="/resources/styles/page.css" rel="stylesheet" type="text/css">
-    <script language="javascript" src="/resoucres/scripts/jquery.min.js" type="text/javascript"></script>
-    <script language="javascript" src="/resoucres/scripts/jquery-ui.min.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jquery.min.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jquery-ui.min.js" type="text/javascript"></script>
     <!--[if IE]><script language="javascript" src="/resources/scripts/excanvas.min.js" type="text/javascript"></script><![endif]-->
     <script language="javascript" src="/resources/scripts/jquery.jqplot.min.js" type="text/javascript"></script>
     <script language="javascript" src="/resources/scripts/jqplot.barRenderer.min.js" type="text/javascript"></script>
