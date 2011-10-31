@@ -61,10 +61,10 @@
           <img id="image_1" class="component image" src="/resources/images/magnifying-glass.jpg" style="width:22px;min-width:22px;height:18px;">
         </div>
         <div class="wrapper" style="top:114px;left:715px;">
-          <input type="button" id="button_1" class="component button" value="Home" style="font-size:15.8px;">
+          <a href="/home">Home</a>
         </div>
         <div class="wrapper" style="top:112px;left:797px;">
-          <input type="button" id="button_2" class="component button" value="Logout" style="width:60px;min-width:60px;height:28px;font-size:15.8px;">
+          <a href="/logout">Logout</a>
         </div>
         <div class="wrapper" style="top:424px;left:200px;">
           <h3 id="heading_2" class="component heading">Is your patient not on the list? Send an invitation to his/her email!</h3>
