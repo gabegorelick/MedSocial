@@ -88,7 +88,7 @@
               </div>
             </div>
             <div class="wrapper" style="top:41px;left:811px;">
-              <input type="button" id="button_1" class="component button" value="Home" style="width:61px;min-width:61px;height:28px;font-size:15.8px;">
+              <a href="/home">Home</a>
             </div>
             <div class="wrapper" style="top:39px;left:887px;">
               <a href="/logout">Logout</a>
