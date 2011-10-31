@@ -1,5 +1,7 @@
 package com.medsocial.security;
 
+import java.util.EnumSet;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -28,6 +30,7 @@ public class GoogleAccountsAuthenticationProvider implements AuthenticationProvi
         	
             // User not in registry. Needs to register
             user = new GaeUser();
+            user.setAuthorities(EnumSet.of(AppRole.NEW_USER));
             user.setUserId(googleUser.getUserId());
             user.setNickname(googleUser.getNickname());
             user.setEmail(googleUser.getEmail());

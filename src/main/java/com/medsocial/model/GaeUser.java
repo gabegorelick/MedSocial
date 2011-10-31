@@ -30,7 +30,7 @@ public class GaeUser implements Serializable {
 	private boolean enabled;
 	
 	public GaeUser() {
-		authorities = EnumSet.of(AppRole.NEW_USER);
+		authorities = EnumSet.noneOf(AppRole.class);
 		enabled = true;
 	}
 	
