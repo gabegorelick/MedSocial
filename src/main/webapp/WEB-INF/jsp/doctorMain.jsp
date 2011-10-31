@@ -66,7 +66,6 @@
                 </div>
                 <div class="wrapper" style="top:40px;left:748px;">
                   <input type="button" id="jquery_button_2" class="component jquery_button" value="Home">
-                  <span class="marker"><img id="jquery_button_2_action" src="/resources/images/icons/action_small.png"></span>
                 </div>
                 <div class="wrapper" style="top:40px;left:821px;">
                   <input type="button" id="jquery_button_3" class="component jquery_button" value="Logout">
@@ -298,7 +297,6 @@
         </div>
       </div>
     </div>
-    <table border="0" style="position: fixed; top: 0px; left: 50%; margin-left: -480px; width: 960px; background-color: #F7931E; color: white; font-size: 26px; vertical-align: middle;"><tr><td width="1%"></td><td width="5%"><a href="http://www.appsketcher.com"><img src="/resources/images/icons/sketcher.png" title="App Sketcher" border="0"></a></td><td width="66%"><a href="http://www.appsketcher.com" style="color: white;">App Sketcher Trial</a></td><td width="10%"><a href="http://www.appsketcher.com/support/" style="font-size: 16px;">Feedback</a></td><td width="7%"><a href="http://www.appsketcher.com/buy/" style="font-size: 16px;">Buy It</a></td></tr></table>
     <span style="position: fixed; top: 2px; right: 2px;"><a href="site.map.html"><img src="/resources/images/icons/sitemap.png" title="Site Map" width="23" height="23" border="0"></a></span>
   </body>
 </html>
