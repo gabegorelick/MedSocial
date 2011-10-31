@@ -32,6 +32,11 @@ retrieved.
                Surname:
                </form:label><form:errors path="surname" cssClass="fieldError" /> <br />
                <form:input path="surname" /><br />
+               
+               <form:label path="accountType">Account Type:</form:label>
+               <form:radiobutton path="accountType" value="DOCTOR"/>Doctor
+               <form:radiobutton path="accountType" value="PATIENT"/>Patient
+               <br/>
         </fieldset>
         <input type="submit" value="Register">
 </form:form>

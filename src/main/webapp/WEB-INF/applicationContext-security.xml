@@ -15,6 +15,9 @@
     	<intercept-url pattern="/logout" access="permitAll"/>
     	<intercept-url pattern="/register/**" access="hasRole('NEW_USER')" />
     	<intercept-url pattern="/**" access="hasRole('USER')" />
+    	
+    	<!-- TODO doctor/patient roles -->
+    	
     	<custom-filter position="PRE_AUTH_FILTER" ref="gaeFilter" />
     	
     </http>
