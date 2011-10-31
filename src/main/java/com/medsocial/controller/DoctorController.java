@@ -22,4 +22,9 @@ public class DoctorController {
 	public String editPrescription() {
 		return "editPrescription";
 	}
+	
+	@RequestMapping({"/addPatient", "/{userId}/patients/add"})
+	public String addPatient() {
+		return "addPatient";
+	}
 }
