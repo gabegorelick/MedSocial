@@ -65,10 +65,10 @@
                   <img id="image_1" class="component image" src="/resources/images/magnifying-glass.jpg" style="width:23px;min-width:23px;height:18px;">
                 </div>
                 <div class="wrapper" style="top:40px;left:748px;">
-                  <input type="button" id="jquery_button_2" class="component jquery_button" value="Home">
+                  <a href="/home">Home</a>
                 </div>
                 <div class="wrapper" style="top:40px;left:821px;">
-                  <input type="button" id="jquery_button_3" class="component jquery_button" value="Logout">
+                  <a href="/logout">Logout</a>
                 </div>
               </div>
             </div>
@@ -281,7 +281,7 @@
                       <img id="image_7" class="component image" src="/resources/images/sample_2.png" style="width:50px;min-width:50px;height:50px;">
                     </div>
                     <div class="wrapper" style="top:6px;left:121px;">
-                      <input type="button" id="jquery_button_6" class="component jquery_button" value="Edit Patients">
+                      <a href="/doctor/${userId}/patients">Edit Patients</a>
                     </div>
                     <div class="wrapper" style="top:58px;left:71px;">
                       <h3 id="heading_9" class="component heading">George Sovechkin</h3>
