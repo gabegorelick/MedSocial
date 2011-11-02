@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -84,7 +86,7 @@
                       <img id="image_2" class="component image" src="/resources/images/sample_2.png" style="width:182px;min-width:182px;height:234px;">
                     </div>
                     <div class="wrapper center" style="top:263px;margin-left:0px;">
-                      <h3 id="heading_3" class="component heading">Dr. Bandekar</h3>
+                      <h3 id="heading_3" class="component heading">${user.nickname}</h3>
                     </div>
                     <div class="wrapper" style="top:297px;left:8px;">
                       <span id="label_5" class="component label">Email</span>

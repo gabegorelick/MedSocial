@@ -16,6 +16,11 @@
     <context:annotation-config />
     <mvc:annotation-driven/>
     
+    <!-- HandlerInterceptors -->
+    <mvc:interceptors>
+    	<bean class="com.medsocial.web.UserHandlerInterceptor"/>
+    </mvc:interceptors>
+    
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
         
     <!-- Handles GET requests for /resources/** by efficiently serving static content in the ${webappRoot}/resources dir -->

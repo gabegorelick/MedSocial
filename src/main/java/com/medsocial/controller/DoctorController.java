@@ -12,17 +12,12 @@ public class DoctorController {
 	@RequestMapping({"", "/home"})
 	public ModelAndView home(Authentication auth) {
 		ModelAndView mav = new ModelAndView("doctorMain");
-		
-		// TODO HandlerInterceptor?
-		mav.addObject("userId", auth.getName());
 		return mav;
 	}
 		
 	@RequestMapping("/{userId}/patients") // TODO figure out this API
 	public ModelAndView getPatients(Authentication auth) {
 		ModelAndView mav = new ModelAndView("doctor/patient");
-		
-		mav.addObject("userId", auth.getName());
 		return mav;
 	}
 	
