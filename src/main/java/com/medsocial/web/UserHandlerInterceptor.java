@@ -15,9 +15,9 @@ public class UserHandlerInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
-		GaeUser user = (GaeUser) auth.getPrincipal();
-		if (modelAndView != null) {
+		Object principal = auth.getPrincipal();
+		if (principal instanceof GaeUser && modelAndView != null) {
+			GaeUser user = (GaeUser) auth.getPrincipal();
 			modelAndView.addObject("user", user);
 		}
 	}
