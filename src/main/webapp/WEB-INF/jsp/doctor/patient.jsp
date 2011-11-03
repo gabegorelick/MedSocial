@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -70,7 +72,7 @@
               <img id="image_2" class="component image" src="/resources/images/sample.png" style="width:193px;min-width:193px;height:245px;">
             </div>
             <div class="wrapper" style="top:340px;left:30px;">
-              <h3 id="heading_2" class="component heading">Name Goes Here</h3>
+              <h3 id="heading_2" class="component heading">${user.nickname}</h3>
             </div>
             <div class="wrapper" style="top:75px;left:220px;">
               <div id="v_line_1" class="component v_line" style="height:565px;border-left-width:3px;">
