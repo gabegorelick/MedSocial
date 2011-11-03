@@ -53,7 +53,7 @@ public class DoctorController {
 	
 	@RequestMapping(value = "/addSuggestion", method = RequestMethod.POST)
 	public ModelAndView addSuggestion(@RequestParam String suggestion) {
-		ModelAndView mav = new ModelAndView("redirect:doctorMain");
+		ModelAndView mav = new ModelAndView("redirect:/doctor");
 		
 		logger.debug("Got suggestion {}", suggestion);
 		
