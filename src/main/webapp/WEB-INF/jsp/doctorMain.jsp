@@ -196,10 +196,25 @@
                                 </div>
                               </div>
                             </div>
+                            <div class="wrapper" style="top:0px;left:85px;">
+                            <c:forEach var="suggestion" items="${suggestions}">
+                            	<div class="component div" style="width:265px;min-width:265px;height:39px;border-style:none;">
+                                <div class="wrapper" style="top:3px;left:2px;">
+                                  <p id="p_4" class="component p" style="width:232px;min-width:232px;">
+                                  	${suggestion}
+                                  </p>
+                                </div>
+                              </div>
+                            </c:forEach>
+                              
+                            </div>
                           </div>
                         </div>
                         <div class="wrapper" style="top:155px;left:69px;">
-                          <input type="text" id="text_input_7" class="component text_input" size="20" value="Write a suggestion..." style="width:345px;min-width:345px;color:#999999;">
+                        <form action="/doctor/addSuggestion" method="post">
+                          <input name="suggestion" type="text" id="text_input_7" class="component text_input" size="20" value="Write a suggestion..." style="width:345px;min-width:345px;color:#999999;"/>
+                          <input type="submit"/>
+                        </form>
                         </div>
                       </div>
                     </div>
@@ -283,7 +298,7 @@
                       <img id="image_7" class="component image" src="/resources/images/sample_2.png" style="width:50px;min-width:50px;height:50px;">
                     </div>
                     <div class="wrapper" style="top:6px;left:121px;">
-                      <a href="/doctor/${userId}/patients">Edit Patients</a>
+                      <a href="/doctor/${user.userId}/patients">Edit Patients</a>
                     </div>
                     <div class="wrapper" style="top:58px;left:71px;">
                       <h3 id="heading_9" class="component heading">George Sovechkin</h3>

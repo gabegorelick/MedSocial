@@ -17,6 +17,8 @@ public class UserHandlerInterceptor extends HandlerInterceptorAdapter {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		
 		GaeUser user = (GaeUser) auth.getPrincipal();
-		modelAndView.addObject("user", user);
+		if (modelAndView != null) {
+			modelAndView.addObject("user", user);
+		}
 	}
 }

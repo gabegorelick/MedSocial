@@ -10,6 +10,6 @@ public class PatientController {
 
 	@RequestMapping("/{userId}/home")
 	public String home(@PathVariable String userId) {
-		return "patientHome";
+		return "patient/home";
 	}
 }

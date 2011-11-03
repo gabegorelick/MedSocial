@@ -69,6 +69,11 @@
         	<version>1.1.1</version>
         	<scope>runtime</scope>
     	</dependency>
+    	<dependency>
+    		<groupId>javax.jdo</groupId>
+    		<artifactId>jdo-api</artifactId>
+    		<version>3.0</version>
+    	</dependency>
     	
         <!--
         jars from GAE's "lib/user" must be added as compile-time dependencies,
