@@ -1,6 +1,6 @@
 package com.medsocial.controller;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,8 +30,12 @@ public class DoctorController {
 		ModelAndView mav = new ModelAndView("doctorMain");
 		
 		Objectify ofy = objectifyFactory.begin();
-		Collection<Message> messages = ofy.get(Message.class).values();
+		
+		// TODO only get relevant messages
+		List<Message> messages = ofy.query(Message.class).list();
+		logger.debug("Adding {} to messages", messages);
 		mav.addObject("messages", messages);
+				
 		return mav;
 	}
 		

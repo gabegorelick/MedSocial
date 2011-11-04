@@ -9,7 +9,9 @@ import org.springframework.cache.annotation.Cacheable;
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
+import com.medsocial.model.Doctor;
 import com.medsocial.model.GaeUser;
+import com.medsocial.model.Patient;
 
 public class GaeDatastoreUserRegistry implements UserRegistry {
     
@@ -44,6 +46,18 @@ public class GaeDatastoreUserRegistry implements UserRegistry {
     	
     	Objectify objectify = objectifyFactory.begin();
         objectify.put(newUser);
+        
+        if (newUser.getAuthorities().contains(AppRole.DOCTOR)) {
+        	Doctor doc = new Doctor(newUser);
+        	objectify.put(doc);
+        	cacheManager.getCache("doctors").put(doc.getUserId(), doc);
+        }
+        
+        if (newUser.getAuthorities().contains(AppRole.PATIENT)) {
+        	Patient pat = new Patient(newUser);
+        	objectify.put(pat);
+        	cacheManager.getCache("patients").put(pat.getUserId(), pat);
+        }
         
         cacheManager.getCache("users").put(newUser.getUserId(), newUser);
     }

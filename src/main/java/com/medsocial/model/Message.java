@@ -4,7 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
+import com.googlecode.objectify.Key;
 
 @Entity
 public class Message {
@@ -12,11 +13,9 @@ public class Message {
 	@Id
 	private Long id;
 
-	@OneToOne
-	private GaeUser patient;
+	private Key<GaeUser> patient;
 	
-	@OneToOne
-	private GaeUser doctor;
+	private Key<GaeUser> doctor;
 	
 	private String status;
 	
@@ -34,19 +33,19 @@ public class Message {
 		return id;
 	}
 	
-	public GaeUser getPatient() {
+	public Key<GaeUser> getPatient() {
 		return patient;
 	}
 
-	public void setPatient(GaeUser patient) {
+	public void setPatient(Key<GaeUser> patient) {
 		this.patient = patient;
 	}
 
-	public GaeUser getDoctor() {
+	public Key<GaeUser> getDoctor() {
 		return doctor;
 	}
 
-	public void setDoctor(GaeUser doctor) {
+	public void setDoctor(Key<GaeUser> doctor) {
 		this.doctor = doctor;
 	}
 
