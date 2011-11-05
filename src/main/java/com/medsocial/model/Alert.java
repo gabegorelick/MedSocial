@@ -13,9 +13,19 @@ public class Alert {
 	
 	private String medication;
 	
-	private Key<Comment> comment;
+	/**
+	 * Patient's comment
+	 */
+	private String comment;
 	
 	private Key<GaeUser> patient;
+	
+	private boolean took;
+	
+	/**
+	 * Doctor's response
+	 */
+	private String response;
 	
 	public Alert() {
 		
@@ -33,11 +43,11 @@ public class Alert {
 		this.medication = medication;
 	}
 
-	public Key<Comment> getComment() {
+	public String getComment() {
 		return comment;
 	}
 
-	public void setComment(Key<Comment> comment) {
+	public void setComment(String comment) {
 		this.comment = comment;
 	}
 
@@ -47,6 +57,30 @@ public class Alert {
 
 	public void setPatient(Key<GaeUser> patient) {
 		this.patient = patient;
+	}
+
+	/**
+	 * 
+	 * @return {@code true} iff patient took medication
+	 */
+	public boolean took() {
+		return took;
+	}
+
+	/**
+	 * 
+	 * @param took {@code true} iff patient took the medication
+	 */
+	public void setTook(boolean took) {
+		this.took = took;
+	}
+
+	public String getResponse() {
+		return response;
+	}
+
+	public void setResponse(String response) {
+		this.response = response;
 	}
 
 	/**
