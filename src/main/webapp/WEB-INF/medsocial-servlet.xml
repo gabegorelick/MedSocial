@@ -11,8 +11,10 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
         
-    <!-- controller scanning, may need to turn this off for performance -->
+    <!-- component scanning, may need to turn this off for performance -->
     <context:component-scan base-package="com.medsocial.controller"/>
+    <context:component-scan base-package="com.medsocial.dao"/>
+    
     <context:annotation-config />
     <mvc:annotation-driven/>
     
@@ -47,6 +49,7 @@
 				<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="users" />
 				<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="patients" />
 				<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="doctors" />
+				<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="alerts" />
 			</set>
 		</property>
 	</bean>

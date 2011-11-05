@@ -1,4 +1,4 @@
-package com.medsocial.security;
+package com.medsocial.dao;
 
 import com.medsocial.model.GaeUser;
 

@@ -1,4 +1,4 @@
-package com.medsocial.security;
+package com.medsocial.dao;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +12,7 @@ import com.googlecode.objectify.ObjectifyFactory;
 import com.medsocial.model.Doctor;
 import com.medsocial.model.GaeUser;
 import com.medsocial.model.Patient;
+import com.medsocial.security.AppRole;
 
 public class GaeDatastoreUserRegistry implements UserRegistry {
     
