@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ExtendedModelMap;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,8 +35,10 @@ public class RegistrationController {
 	private UserRegistry registry;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public RegistrationForm registrationForm() {
-		return new RegistrationForm();
+	public Model registrationForm() {
+		Model model = new ExtendedModelMap();
+		model.addAttribute(new RegistrationForm());
+		return model;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

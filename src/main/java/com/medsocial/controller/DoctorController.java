@@ -27,7 +27,7 @@ public class DoctorController {
 	
 	@RequestMapping({"", "/home"})
 	public ModelAndView home(Authentication auth) {
-		ModelAndView mav = new ModelAndView("doctorMain");
+		ModelAndView mav = new ModelAndView("doctor/doctorMain");
 		
 		Objectify ofy = objectifyFactory.begin();
 		
@@ -47,12 +47,12 @@ public class DoctorController {
 	
 	@RequestMapping("/{userId}/prescriptions/edit")
 	public String editPrescription() {
-		return "editPrescription";
+		return "doctor/editPrescription";
 	}
 	
 	@RequestMapping({"/addPatient", "/{userId}/patients/add"})
 	public String addPatient() {
-		return "addPatient";
+		return "doctor/addPatient";
 	}
 	
 	@RequestMapping(value = "/addSuggestion", method = RequestMethod.POST)
