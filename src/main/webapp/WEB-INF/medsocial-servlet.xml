@@ -45,6 +45,8 @@
 		<property name="caches">
 			<set>
 				<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="users" />
+				<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="patients" />
+				<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="doctors" />
 			</set>
 		</property>
 	</bean>

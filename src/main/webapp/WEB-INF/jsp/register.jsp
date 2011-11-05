@@ -25,17 +25,21 @@ retrieved.
        <fieldset>
                <form:label path="forename">
                Forename:
-               </form:label> <form:errors path="forename" cssClass="fieldError" /><br />
+               </form:label> <form:errors path="forename" cssClass="fieldError" />
                <form:input path="forename" /> <br />
  
                <form:label path="surname">
                Surname:
-               </form:label><form:errors path="surname" cssClass="fieldError" /> <br />
+               </form:label><form:errors path="surname" cssClass="fieldError" />
                <form:input path="surname" /><br />
                
                <form:label path="accountType">Account Type:</form:label>
                <form:radiobutton path="accountType" value="DOCTOR"/>Doctor
                <form:radiobutton path="accountType" value="PATIENT"/>Patient
+               <br/>
+               
+               <form:label path="doctorId">Doctor:</form:label>
+               <form:input path="doctorId"/>
                <br/>
         </fieldset>
         <input type="submit" value="Register">

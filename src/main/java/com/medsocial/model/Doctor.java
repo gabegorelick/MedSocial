@@ -3,6 +3,7 @@ package com.medsocial.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Unindexed;
 
 @Entity
@@ -12,9 +13,9 @@ public class Doctor {
 	private String userId;
 	
 	@Unindexed
-	private GaeUser user;
+	private Key<GaeUser> user;
 	
-	private Patient patient;
+	private Key<Patient> patient;
 	
 	@SuppressWarnings("unused")
 	private Doctor() {
@@ -23,23 +24,23 @@ public class Doctor {
 	
 	public Doctor(GaeUser user) {
 		userId = user.getUserId();
-		this.user = user;
+		this.user = new Key<GaeUser>(GaeUser.class, user.getUserId());
 	}
 
 	public String getUserId() {
 		return userId;
 	}
 
-	public GaeUser getUser() {
+	public Key<GaeUser> getUser() {
 		return user;
 	}
 
-	public Patient getPatient() {
+	public Key<Patient> getPatient() {
 		return patient;
 	}
 
 	public void setPatient(Patient patient) {
-		this.patient = patient;
+		this.patient = new Key<Patient>(Patient.class, patient.getUserId());
 	}
 
 }

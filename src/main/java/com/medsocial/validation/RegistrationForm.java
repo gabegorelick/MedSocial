@@ -14,7 +14,9 @@ public class RegistrationForm {
 	
 	@NotNull
 	private AccountType accountType;
-
+	
+	private String doctorId;
+	
 	public String getForename() {
 		return forename;
 	}
@@ -39,6 +41,14 @@ public class RegistrationForm {
 		this.accountType = role;
 	}
 	
+	public String getDoctorId() {
+		return doctorId;
+	}
+
+	public void setDoctorId(String doctorId) {
+		this.doctorId = doctorId;
+	}
+
 	/**
 	 * Limit {@link AppRole} to Doctor or Patient.
 	 * @author Gabe Gorelick
