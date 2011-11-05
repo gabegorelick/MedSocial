@@ -11,7 +11,6 @@ import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.medsocial.model.Alert;
-import com.medsocial.model.Comment;
 import com.medsocial.model.GaeUser;
 
 @Controller
@@ -27,18 +26,19 @@ public class PatientController {
 	}
 	
 	@RequestMapping("/{userId}/alerts/add")
-	public String addAlert(@PathVariable String userId, @RequestParam String comment, Authentication auth) {
+	public String addAlert(@PathVariable String userId, @RequestParam String comment, @RequestParam String medication, @RequestParam Boolean took, 
+			Authentication auth) {
+		
 		Objectify ofy = objectifyFactory.begin();
-		
-		Comment comm = new Comment();
-		comm.setText(comment);
-		
+			
 		GaeUser user = (GaeUser) auth.getPrincipal();
-		comm.setAuthor(new Key<GaeUser>(GaeUser.class, user.getUserId()));
-		Key<Comment> commentKey = ofy.put(comm);
+		Key<GaeUser> userKey = new Key<GaeUser>(GaeUser.class, user.getUserId());
 		
 		Alert alert = new Alert();
-		alert.setComment(commentKey);
+		alert.setComment(comment);
+		alert.setMedication(medication);
+		alert.setTook(took);
+		alert.setPatient(userKey);
 				
 		ofy.put(alert);
 		

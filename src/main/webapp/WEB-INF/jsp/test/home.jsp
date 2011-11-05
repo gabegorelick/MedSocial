@@ -11,6 +11,14 @@
 	<label for="comment">Comment</label>
 	<textarea id="comment" name="comment"></textarea>
 	
+	<input type="hidden" name="medication" value="Prozac">
+	Medication: Prozac <br/>
+	
+	<label for="taking">Taking</label>
+	<input type="radio" id="taking" name="took" value="true"/>
+	<label for="notTaking">Not taking</label>
+	<input type="radio" id="notTaking" name="took" value="false"/>
+	
 	<input type="submit"/>
 </form>
 </body>

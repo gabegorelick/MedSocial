@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
-import com.medsocial.model.Message;
+import com.medsocial.dao.MedSocialDao;
+import com.medsocial.model.Alert;
 
 @Controller
 @RequestMapping("/doctor")
@@ -22,8 +24,12 @@ public class DoctorController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DoctorController.class);
 
-	 @Autowired
-	 private ObjectifyFactory objectifyFactory;
+	// TODO do everything through DAO
+	@Autowired
+	private ObjectifyFactory objectifyFactory;
+		
+	@Autowired
+	private MedSocialDao dao;
 	
 	@RequestMapping({"", "/home"})
 	public ModelAndView home(Authentication auth) {
@@ -32,9 +38,11 @@ public class DoctorController {
 		Objectify ofy = objectifyFactory.begin();
 		
 		// TODO only get relevant messages
-		List<Message> messages = ofy.query(Message.class).list();
-		logger.debug("Adding {} to messages", messages);
-		mav.addObject("messages", messages);
+		List<Alert> alerts = ofy.query(Alert.class).list();
+		
+		
+		logger.debug("Adding {} to alerts", alerts);
+		mav.addObject("alerts", alerts);
 				
 		return mav;
 	}
@@ -55,18 +63,16 @@ public class DoctorController {
 		return "doctor/addPatient";
 	}
 	
-	@RequestMapping(value = "/addSuggestion", method = RequestMethod.POST)
-	public ModelAndView addSuggestion(@RequestParam String suggestion) {
+	@RequestMapping(value = "/alerts/${alertId}/respond", method = RequestMethod.POST)
+	public ModelAndView respond(@PathVariable Long alertId, @RequestParam String response) {		
+		logger.debug("Got response {}", response);
+		
+		Alert alert = dao.getAlert(alertId);
+		alert.setResponse(response);
+		dao.putAlert(alert);				
+		
 		ModelAndView mav = new ModelAndView("redirect:/doctor");
-		
-		logger.debug("Got suggestion {}", suggestion);
-		
-		Message message = new Message();
-		message.setSuggestion(suggestion);
-		
-		Objectify objectify = objectifyFactory.begin();
-		objectify.put(message);
-		
 		return mav;
 	}
+	
 }

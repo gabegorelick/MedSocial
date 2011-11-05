@@ -11,6 +11,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 
 import com.google.appengine.api.users.User;
+import com.medsocial.dao.UserRegistry;
 import com.medsocial.model.GaeUser;
 
 public class GoogleAccountsAuthenticationProvider implements AuthenticationProvider {

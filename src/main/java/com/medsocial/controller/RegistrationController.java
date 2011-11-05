@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.appengine.api.users.UserServiceFactory;
+import com.medsocial.dao.UserRegistry;
 import com.medsocial.model.GaeUser;
 import com.medsocial.security.AppRole;
 import com.medsocial.security.GaeUserAuthentication;
-import com.medsocial.security.UserRegistry;
 import com.medsocial.validation.RegistrationForm;
 
 @Controller

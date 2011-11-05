@@ -198,12 +198,6 @@
                             </div>
                           </div>
                         </div>
-                        <div class="wrapper" style="top:155px;left:69px;">
-                        <form action="/doctor/addSuggestion" method="post">
-                          <input name="suggestion" type="text" id="text_input_7" class="component text_input" size="20" value="Write a suggestion..." style="width:345px;min-width:345px;color:#999999;"/>
-                          <input type="submit"/>
-                        </form>
-                        </div>
                       </div>
                     </div>
                     <div class="wrapper" style="top:249px;left:9px;">
@@ -269,8 +263,14 @@
                       </div>
                       
                       
-                       <c:forEach var="message" items="${messages}">
-                            <div>${message.suggestion}</div>
+                       <c:forEach var="alert" items="${alerts}">
+                       	<form action="/doctor/respond" method="post">
+                       		<p>Alert: ${alert.id}</p> 
+                        	<input type="hidden" name="alertId" value="${alert.id}"/>
+                          	<input name="response" type="text" id="text_input_7" class="component text_input" size="20" value="Write a suggestion..." style="width:345px;min-width:345px;color:#999999;"/>
+                          	<input type="submit"/>
+                        </form>
+                            <div>${alert.comment}</div>
                        </c:forEach>
                       
                       

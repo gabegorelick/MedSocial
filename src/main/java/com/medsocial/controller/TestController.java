@@ -21,7 +21,9 @@ public class TestController {
 	}
 	
 	@RequestMapping("/patient/addComment")
-	public String addPatientComment(@RequestParam String comment, Authentication auth) {
+	public String addPatientComment(@RequestParam String comment, @RequestParam String medication, @RequestParam Boolean took, 
+			Authentication auth) {
+		
 		logger.debug("Received comment {}", comment);
 		
 		GaeUser user = (GaeUser) auth.getPrincipal();
