@@ -1,6 +1,8 @@
 package com.medsocial.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.medsocial.dao.MedSocialDao;
+import com.medsocial.dao.UserRegistry;
 import com.medsocial.model.Alert;
 
 @Controller
@@ -27,6 +30,9 @@ public class DoctorController {
 	// TODO do everything through DAO
 	@Autowired
 	private ObjectifyFactory objectifyFactory;
+	
+	@Autowired
+	private UserRegistry userRegistry;
 		
 	@Autowired
 	private MedSocialDao dao;
@@ -43,7 +49,17 @@ public class DoctorController {
 		
 		logger.debug("Adding {} to alerts", alerts);
 		mav.addObject("alerts", alerts);
-				
+		
+		Map<String, String> patientUserNames = new HashMap<String, String>();
+		for (Alert a : alerts) {
+			String id = a.getPatient().getName();
+			if (!patientUserNames.containsKey(id)) {
+				String name = userRegistry.findUser(id).getNickname();
+				patientUserNames.put(id, name);
+			}
+		}
+		mav.addObject("patientUserNames", patientUserNames);
+						
 		return mav;
 	}
 		

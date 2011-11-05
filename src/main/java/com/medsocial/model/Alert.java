@@ -18,8 +18,11 @@ public class Alert {
 	 */
 	private String comment;
 	
+	/**
+	 * Reference to patient key in datastore
+	 */
 	private Key<GaeUser> patient;
-	
+		
 	private boolean took;
 	
 	/**
@@ -82,7 +85,7 @@ public class Alert {
 	public void setResponse(String response) {
 		this.response = response;
 	}
-
+	
 	/**
 	 * Actions a patient can take for a given alert.
 	 * @author Gabe Gorelick

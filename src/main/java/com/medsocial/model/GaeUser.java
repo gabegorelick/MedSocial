@@ -14,7 +14,7 @@ public class GaeUser implements Serializable {
 	
 	private static final long serialVersionUID = -6788420696395476568L;
 	
-	@Id
+	@Id // TODO make this a Long
 	private String userId;
 	
 	private String email;
