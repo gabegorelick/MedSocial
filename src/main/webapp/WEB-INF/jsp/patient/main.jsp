@@ -188,7 +188,7 @@
                 <input id="button_7" class="component button font_cursive" value="Notes" style="width: 40px; min-width: 40px; height: 43px; font-size: 9px;" type="button" onClick="location.href='notes.html';">
                     </div>
 	<div class="wrapper" style="top:10px;left:150px;">
-                <input id="logoutbutton" class="component button font_cursive" value="logout" style="width: 40px; min-width: 40px; height: 20px; font-size: 9px;" type="button" onClick="location.href='login.html';">
+                <input id="logoutbutton" class="component button font_cursive" value="logout" style="width: 40px; min-width: 40px; height: 20px; font-size: 9px;" type="button" onClick="location.href='/logout';">
                     </div>
               <div class="wrapper" style="top:47px;left:9px;">
                 <span id="label_35" class="component label" style="width:215px;min-width:215px;border-width:1px;border-style:dashed;color:#cc0000;">Calendar here should be scrollable<br>has notes and prescriptions on <br>alert times<br>should be able to move between day <br>and time of day<br><br><br><br><br><br><br><br><br></span>
