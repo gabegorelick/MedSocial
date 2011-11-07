@@ -1,21 +1,19 @@
-<%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
     <title>Patient UI</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="a HTML prototype page created with App Sketcher">
-    <link href="/resources/styles/jquery-ui.css" rel="stylesheet" type="text/css">
-    <link href="/resources/styles/page.css" rel="stylesheet" type="text/css">
-    <script language="javascript" src="/resources/scripts/jquery.js" type="text/javascript"></script>
-    <script language="javascript" src="/resources/scripts/jquery-ui.js" type="text/javascript"></script>
-    <!--[if IE]><script language="javascript" src="/resources/scripts/excanvas.min.js" type="text/javascript"></script><![endif]-->
-    <script language="javascript" src="/resources/scripts/jquery_003.js" type="text/javascript"></script>
-    <script language="javascript" src="/resources/scripts/jqplot.js" type="text/javascript"></script>
-    <script language="javascript" src="/resources/scripts/jqplot_002.js" type="text/javascript"></script>
-    <script language="javascript" src="/resources/scripts/jqplot_003.js" type="text/javascript"></script>
-    <script language="javascript" src="/resources/scripts/jquery_002.js" type="text/javascript"></script>
-    <script language="javascript" src="/resources/scripts/page.js" type="text/javascript"></script>
+    <link href="patientUI_files/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="patientUI_files/page.css" rel="stylesheet" type="text/css">
+    <script language="javascript" src="patientUI_files/jquery.js" type="text/javascript"></script>
+    <script language="javascript" src="patientUI_files/jquery-ui.js" type="text/javascript"></script>
+    <!--[if IE]><script language="javascript" src="scripts/excanvas.min.js" type="text/javascript"></script><![endif]-->
+    <script language="javascript" src="patientUI_files/jquery_003.js" type="text/javascript"></script>
+    <script language="javascript" src="patientUI_files/jqplot.js" type="text/javascript"></script>
+    <script language="javascript" src="patientUI_files/jqplot_002.js" type="text/javascript"></script>
+    <script language="javascript" src="patientUI_files/jqplot_003.js" type="text/javascript"></script>
+    <script language="javascript" src="patientUI_files/jquery_002.js" type="text/javascript"></script>
+    <script language="javascript" src="patientUI_files/page.js" type="text/javascript"></script>
     <style type="text/css">
       .tooltip {display:none;color:black;background-color:#ffa;border:1px solid #cc9;max-width: 300px; padding:3px;font-size:13px;-moz-box-shadow: 2px 2px 11px #666;-webkit-box-shadow: 2px 2px 11px #666;}
     </style>
@@ -269,22 +267,22 @@
               </div>
               <div class="wrapper" style="top:269px;left:28px;">
                 <input id="button_3" class="component button font_cursive" value="Sign Up" style="width: 68px; min-width: 68px; height: 27px; font-size: 11.7px;" type="button">
-                <span class="marker"><img id="button_3_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_3_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:263px;left:114px;">
                 <input id="button_2" class="component button font_cursive" value="Login" style="width: 86px; min-width: 86px; height: 39px; font-size: 20.2px;" type="button">
-                <span class="marker"><img id="button_2_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_2_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:37px;left:40px;">
-                <img id="image_2" class="component image" src="/resources/images/login.jpg" style="width: 164px; min-width: 164px; height: 165px;">
+                <img id="image_2" class="component image" src="patientUI_files/login.jpg" style="width: 164px; min-width: 164px; height: 165px;">
               </div>
               <div class="wrapper" style="top:4px;left:1px;">
-                <img id="image_3" class="component image" src="/resources/images/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
+                <img id="image_3" class="component image" src="patientUI_files/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
               </div>
             </div>
             <div id="view_2" class="view" style="height:317px;">
               <div class="wrapper" style="top:4px;left:1px;">
-                <img id="image_4" class="component image" src="/resources/images/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
+                <img id="image_4" class="component image" src="patientUI_files/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
               </div>
               <div class="wrapper" style="top:80px;left:82px;">
                 <input id="text_input_3" class="component text_input" size="20" style="width: 140px; min-width: 140px;" type="text">
@@ -312,7 +310,7 @@
               </div>
               <div class="wrapper center" style="top:283px;margin-left:66px;">
                 <input id="button_4" class="component button font_cursive" value="Submit" type="button">
-                <span class="marker"><img id="button_4_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_4_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:156px;left:10px;">
                 <input id="text_input_8" class="component text_input" size="20" style="width: 211px; min-width: 211px;" type="text">
@@ -328,24 +326,24 @@
               </div>
               <div class="wrapper" style="top:285px;left:14px;">
                 <input id="button_21" class="component button font_cursive" value="Cancel" type="button">
-                <span class="marker"><img id="button_21_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_21_action" src="patientUI_files/action_small.png"></span>
               </div>
             </div>
             <div id="view_3" class="view" style="height:317px;">
               <div class="wrapper" style="top:4px;left:1px;">
-                <img id="image_5" class="component image" src="/resources/images/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
+                <img id="image_5" class="component image" src="patientUI_files/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
               </div>
               <div class="wrapper" style="top:265px;left:5px;">
                 <input id="button_5" class="component button font_cursive" value="Manage Prescriptions" style="width: 105px; min-width: 105px; height: 44px; font-size: 9px;" type="button">
-                <span class="marker"><img id="button_5_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_5_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:266px;left:109px;">
                 <input id="button_6" class="component button font_cursive" value="Manage Doctors" style="width: 84px; min-width: 84px; height: 43px; font-size: 9px;" type="button">
-                <span class="marker"><img id="button_6_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_6_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:265px;left:193px;">
                 <input id="button_7" class="component button font_cursive" value="Notes" style="width: 40px; min-width: 40px; height: 43px; font-size: 9px;" type="button">
-                <span class="marker"><img id="button_7_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_7_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:47px;left:9px;">
                 <span id="label_35" class="component label" style="width:215px;min-width:215px;border-width:1px;border-style:dashed;color:#cc0000;">Calendar here should be scrollable<br>has notes and prescriptions on <br>alert times<br>should be able to move between day <br>and time of day<br><br><br><br><br><br><br><br><br></span>
@@ -353,18 +351,18 @@
             </div>
             <div id="view_4" class="view" style="height:317px;">
               <div class="wrapper" style="top:4px;left:1px;">
-                <img id="image_6" class="component image" src="/resources/images/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
+                <img id="image_6" class="component image" src="patientUI_files/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
               </div>
               <div class="wrapper" style="top:41px;left:7px;">
                 <span id="label_10" class="component label font_cursive" style="font-size:150%;">Prescriptions</span>
               </div>
               <div class="wrapper" style="top:286px;left:20px;">
                 <input id="button_8" class="component button font_cursive" value="Add a Prescription" type="button">
-                <span class="marker"><img id="button_8_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_8_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper center" style="top:286px;margin-left:80px;">
                 <input id="button_15" class="component button font_cursive" value="Done" type="button">
-                <span class="marker"><img id="button_15_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_15_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:76px;left:9px;">
                 <span id="label_34" class="component label" style="width:215px;min-width:215px;border-width:1px;border-style:dashed;color:#cc0000;">List of prescriptions here... scrollable<br>_____________________________<br>Name<br>Alerts: on/off &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[details button]<br>_____________________________<br><br></span>
@@ -372,21 +370,21 @@
             </div>
             <div id="view_5" class="view" style="height:317px;">
               <div class="wrapper" style="top:4px;left:1px;">
-                <img id="image_7" class="component image" src="/resources/images/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
+                <img id="image_7" class="component image" src="patientUI_files/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
               </div>
               <div class="wrapper" style="top:41px;left:7px;">
                 <span id="label_11" class="component label font_cursive" style="font-size:150%;">Doctors</span>
               </div>
               <div class="wrapper center" style="top:172px;margin-left:0px;">
                 <input id="button_9" class="component button font_cursive" value="Add a Doctor" type="button">
-                <span class="marker"><img id="button_9_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_9_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:198px;left:10px;">
                 <span id="label_13" class="component label font_cursive" style="font-size:150%;">Invitations</span>
               </div>
               <div class="wrapper center" style="top:289px;margin-left:85px;">
                 <input id="button_14" class="component button font_cursive" value="Done" type="button">
-                <span class="marker"><img id="button_14_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_14_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:66px;left:10px;">
                 <span id="label_31" class="component label" style="width:215px;min-width:215px;border-width:1px;border-style:dashed;color:#cc0000;">List of Doctors here... scrollable<br>__________________<br>Name<br>Email
@@ -403,7 +401,7 @@
             </div>
             <div id="view_6" class="view" style="height:317px;">
               <div class="wrapper" style="top:4px;left:1px;">
-                <img id="image_8" class="component image" src="/resources/images/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
+                <img id="image_8" class="component image" src="patientUI_files/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
               </div>
               <div class="wrapper" style="top:41px;left:7px;">
                 <span id="label_12" class="component label font_cursive" style="font-size:150%;">Notes</span>
@@ -416,7 +414,7 @@
               </div>
               <div class="wrapper center" style="top:287px;margin-left:76px;">
                 <input id="button_16" class="component button font_cursive" value="Done" type="button">
-                <span class="marker"><img id="button_16_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_16_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:71px;left:9px;">
                 <span id="label_30" class="component label" style="width:203px;min-width:203px;border-width:1px;border-style:dashed;color:#cc0000;">List of Notes go here... scrollable<br><br><br><br><br><br><br></span>
@@ -424,7 +422,7 @@
             </div>
             <div id="view_7" class="view" style="height:317px;">
               <div class="wrapper" style="top:4px;left:1px;">
-                <img id="image_9" class="component image" src="/resources/images/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
+                <img id="image_9" class="component image" src="patientUI_files/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
               </div>
               <div class="wrapper" style="top:46px;left:8px;">
                 <span id="label_14" class="component label font_cursive">Prescription Name</span>
@@ -445,25 +443,25 @@
                 <textarea id="textarea_2" class="component textarea" rows="3" cols="20" style="width: 209px; min-width: 209px; height: 30px;"></textarea>
               </div>
               <div class="wrapper" style="top:149px;left:87px;">
-                <span class="component date_wrapper"><input id="date_field_1" class="component date_field hasDatepicker" size="20" style="width: 133px; min-width: 133px;" type="text"><img title="..." alt="..." src="/resources/images/calendar.png" class="ui-datepicker-trigger"></span>
+                <span class="component date_wrapper"><input id="date_field_1" class="component date_field hasDatepicker" size="20" style="width: 133px; min-width: 133px;" type="text"><img title="..." alt="..." src="patientUI_files/calendar.png" class="ui-datepicker-trigger"></span>
               </div>
               <div class="wrapper" style="top:173px;left:87px;">
-                <span class="component date_wrapper"><input id="date_field_2" class="component date_field hasDatepicker" size="20" style="width: 134px; min-width: 134px;" type="text"><img title="..." alt="..." src="/resources/images/calendar.png" class="ui-datepicker-trigger"></span>
+                <span class="component date_wrapper"><input id="date_field_2" class="component date_field hasDatepicker" size="20" style="width: 134px; min-width: 134px;" type="text"><img title="..." alt="..." src="patientUI_files/calendar.png" class="ui-datepicker-trigger"></span>
               </div>
               <div class="wrapper" style="top:257px;left:14px;">
                 <input id="button_11" class="component button font_cursive" value="Add an Alert" type="button">
-                <span class="marker"><img id="button_11_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_11_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:200px;left:13px;">
                 <span id="label_20" class="component label font_cursive">Alerts</span>
               </div>
               <div class="wrapper" style="top:286px;left:128px;">
                 <input id="button_12" class="component button font_cursive" value="Save" type="button">
-                <span class="marker"><img id="button_12_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_12_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:287px;left:61px;">
                 <input id="button_13" class="component button font_cursive" value="Cancel" type="button">
-                <span class="marker"><img id="button_13_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_13_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:219px;left:12px;">
                 <span id="label_29" class="component label" style="width:205px;min-width:205px;border-width:1px;border-style:dashed;color:#cc0000;">Alerts here... scrollable<br>format: HH:MM AM/PM DDDDDDD<br>7:00 PM SuWThSa</span>
@@ -471,15 +469,15 @@
             </div>
             <div id="view_8" class="view" style="height:317px;">
               <div class="wrapper" style="top:4px;left:1px;">
-                <img id="image_10" class="component image" src="/resources/images/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
+                <img id="image_10" class="component image" src="patientUI_files/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
               </div>
               <div class="wrapper" style="top:268px;left:152px;">
                 <input id="button_17" class="component button font_cursive" value="Submit" type="button">
-                <span class="marker"><img id="button_17_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_17_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:269px;left:22px;">
                 <input id="button_18" class="component button font_cursive" value="Cancel" type="button">
-                <span class="marker"><img id="button_18_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_18_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:76px;left:61px;">
                 <input id="text_input_14" class="component text_input" size="20" type="text">
@@ -505,7 +503,7 @@
             </div>
             <div id="view_9" class="view" style="height:317px;">
               <div class="wrapper" style="top:4px;left:1px;">
-                <img id="image_11" class="component image" src="/resources/images/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
+                <img id="image_11" class="component image" src="patientUI_files/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
               </div>
               <div class="wrapper" style="top:105px;left:16px;">
                 <span id="label_25" class="component label font_cursive">Time</span>
@@ -552,11 +550,11 @@
               </div>
               <div class="wrapper" style="top:288px;left:154px;">
                 <input id="button_19" class="component button font_cursive" value="Submit" type="button">
-                <span class="marker"><img id="button_19_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_19_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:290px;left:16px;">
                 <input id="button_20" class="component button font_cursive" value="Cancel" type="button">
-                <span class="marker"><img id="button_20_action" src="/resources/images/action_small.png"></span>
+                <span class="marker"><img id="button_20_action" src="patientUI_files/action_small.png"></span>
               </div>
               <div class="wrapper" style="top:64px;left:7px;">
                 <span id="label_28" class="component label" style="width:146px;min-width:146px;border-width:1px;border-style:dashed;color:#cc0000;">Prescription Name goes here</span>
@@ -566,5 +564,7 @@
         </div>
       </div>
     </div>
-       
+     
+    <span style="position: fixed; top: 2px; right: 2px;"><a href="file:///C:/Users/Ricky/AppData/Roaming/com.appwork.appsketcher/Local%20Store/projects/P-1767B474-47CB-EB33-C41F-556658E871A7/site.map.html"><img src="patientUI_files/sitemap.png" title="Site Map" border="0" height="23" width="23"></a></span>
+  
 <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div></body></html>
