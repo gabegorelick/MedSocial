@@ -22,7 +22,7 @@ public class PatientController {
 	
 	@RequestMapping("/{userId}/home")
 	public String home(@PathVariable String userId) {
-		return "patient/home";
+		return "patient/main";
 	}
 	
 	@RequestMapping("/{userId}/alerts/add")
@@ -42,6 +42,6 @@ public class PatientController {
 				
 		ofy.put(alert);
 		
-		return "patient/home";
+		return "patient/main";
 	}
 }

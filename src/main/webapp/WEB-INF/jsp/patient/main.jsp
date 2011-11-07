@@ -3,17 +3,17 @@
     <title>Patient UI</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="a HTML prototype page created with App Sketcher">
-    <link href="patientUI_files/jquery-ui.css" rel="stylesheet" type="text/css">
-    <link href="patientUI_files/page.css" rel="stylesheet" type="text/css">
-    <script language="javascript" src="patientUI_files/jquery.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jquery-ui.js" type="text/javascript"></script>
-    <!--[if IE]><script language="javascript" src="scripts/excanvas.min.js" type="text/javascript"></script><![endif]-->
-    <script language="javascript" src="patientUI_files/jquery_003.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jqplot.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jqplot_002.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jqplot_003.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jquery_002.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/page.js" type="text/javascript"></script>
+    <link href="/resources/styles/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="/resources/styles/page.css" rel="stylesheet" type="text/css">
+    <script language="javascript" src="/resources/scripts/jquery.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jquery-ui.js" type="text/javascript"></script>
+    <!--[if IE]><script language="javascript" src="/resources/scripts/excanvas.min.js" type="text/javascript"></script><![endif]-->
+    <script language="javascript" src="/resources/scripts/jquery_003.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jqplot.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jqplot_002.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jqplot_003.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jquery_002.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/page.js" type="text/javascript"></script>
     <style type="text/css">
       .tooltip {display:none;color:black;background-color:#ffa;border:1px solid #cc9;max-width: 300px; padding:3px;font-size:13px;-moz-box-shadow: 2px 2px 11px #666;-webkit-box-shadow: 2px 2px 11px #666;}
     </style>
@@ -21,7 +21,7 @@
       $(function() {
         $(".date_field").datepicker({
           showOn: "button",
-          buttonImage: "images/icons/calendar.png",
+          buttonImage: "/resources/images/icons/calendar.png",
           buttonImageOnly: true
         });
 
@@ -176,7 +176,7 @@
       <div id="main" class="main" style="height:320px;">
            <div id="view_3" class="view" style="height:317px;">
               <div class="wrapper" style="top:4px;left:1px;">
-                <img id="image_5" class="component image" src="patientUI_files/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
+                <img id="image_5" class="component image" src="/resources/images/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
               </div>
               <div class="wrapper" style="top:265px;left:5px;">
                 <input id="button_5" class="component button font_cursive" value="Manage Prescriptions" style="width: 105px; min-width: 105px; height: 44px; font-size: 9px;" type="button" onClick="location.href='prescriptions.html';">
@@ -199,6 +199,6 @@
       </div>
     </div>
      
-    <span style="position: fixed; top: 2px; right: 2px;"><a href="file:///C:/Users/Ricky/AppData/Roaming/com.appwork.appsketcher/Local%20Store/projects/P-1767B474-47CB-EB33-C41F-556658E871A7/site.map.html"><img src="patientUI_files/sitemap.png" title="Site Map" border="0" height="23" width="23"></a></span>
+    <span style="position: fixed; top: 2px; right: 2px;"><a href="file:///C:/Users/Ricky/AppData/Roaming/com.appwork.appsketcher/Local%20Store/projects/P-1767B474-47CB-EB33-C41F-556658E871A7/site.map.html"><img src="/resources/images/sitemap.png" title="Site Map" border="0" height="23" width="23"></a></span>
   
 <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div></body></html>

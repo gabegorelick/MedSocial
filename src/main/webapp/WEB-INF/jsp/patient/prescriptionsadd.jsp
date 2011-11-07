@@ -3,17 +3,17 @@
     <title>Patient UI</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="a HTML prototype page created with App Sketcher">
-    <link href="patientUI_files/jquery-ui.css" rel="stylesheet" type="text/css">
-    <link href="patientUI_files/page.css" rel="stylesheet" type="text/css">
-    <script language="javascript" src="patientUI_files/jquery.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jquery-ui.js" type="text/javascript"></script>
-    <!--[if IE]><script language="javascript" src="scripts/excanvas.min.js" type="text/javascript"></script><![endif]-->
-    <script language="javascript" src="patientUI_files/jquery_003.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jqplot.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jqplot_002.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jqplot_003.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jquery_002.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/page.js" type="text/javascript"></script>
+    <link href="/resources/styles/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="/resources/styles/page.css" rel="stylesheet" type="text/css">
+    <script language="javascript" src="/resources/scripts/jquery.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jquery-ui.js" type="text/javascript"></script>
+    <!--[if IE]><script language="javascript" src="/resources/scripts/excanvas.min.js" type="text/javascript"></script><![endif]-->
+    <script language="javascript" src="/resources/scripts/jquery_003.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jqplot.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jqplot_002.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jqplot_003.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/jquery_002.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/scripts/page.js" type="text/javascript"></script>
     <style type="text/css">
       .tooltip {display:none;color:black;background-color:#ffa;border:1px solid #cc9;max-width: 300px; padding:3px;font-size:13px;-moz-box-shadow: 2px 2px 11px #666;-webkit-box-shadow: 2px 2px 11px #666;}
     </style>
