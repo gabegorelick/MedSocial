@@ -1,0 +1,62 @@
+body{ font-family: arial, calibri, sans-serif; font-size: 12px; min-height: 800px; min-width: 1024px;}
+table{ font-family: arial, calibri, sans-serif; font-size: 12px; }
+img{ border-style: solid; }
+div{ overflow: hidden; }
+h1{ display: inline; }
+h2 {
+   display: inline;
+   line-height: 200%; }
+h3 {
+   display: inline;
+   line-height: 200%; }
+textarea {
+   font-family: arial, calibri, sans-serif;
+   font-size: 12px;
+   resize: vertical;
+   width: 100%;
+   margin-bottom: 1%;}
+
+/*Header*/
+div#header{ border-bottom: solid; padding: 1%; }
+div#title_wrapper{ float: left; width: 22%; }
+div#search_wrapper{ float: left; }
+div#default_btns{ float: right; }
+
+/*Main Content*/
+div#main_wrapper{ padding: 0% 1% 0% 1%; }
+div#left{
+   width: 20%;
+   float: left;
+   text-align: center;
+   padding: 1%; }
+div#middle{
+   width: 52%;
+   border-right: solid;
+   border-left: solid;
+   float: left;
+   padding: 1%; }
+div#right{
+   width: 20%;
+   float: left;
+   padding: 1%; }
+div.label_wrapper { float: left; width: 20%; }
+div.pic_label_wrapper{ float: left; margin-right: 1%; }
+
+/*middle panel*/
+div.message_wrapper{
+   border-style: solid;
+   padding: 1%; }
+div.inner_message_wrapper { padding: 0% 1% 1% 1%; }
+div.patient_message_wrapper{
+   background-color: lightgray;
+   margin-bottom: 1%;
+   border-style: solid;
+   padding: 1%; }
+div.suggestion_wrapper {
+   margin-bottom: 1%;
+   border-style: solid;
+   padding: 1%; }
+.send_suggestion { float: right; }
+
+/*left panel*/
+#add_remove_patients{ float: right; }
