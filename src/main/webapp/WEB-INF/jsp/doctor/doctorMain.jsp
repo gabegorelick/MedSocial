@@ -34,29 +34,34 @@
             <!-- middle panel -->
             <div id="middle">
                <h2> Messages </h2>
-               <!-- single message box -->
-               <div class="message_wrapper">
-                  <div class="pic_label_wrapper"><img src="/resources/images/sample.png" /></div>
-                  <div class="inner_message_wrapper">
-                     <h3><a href=""> Patient Name </a></h3>
-                     <div class="patient_message_wrapper">
-                        <div class="label_wrapper"> Date: </div>
-                        <div> October 31, 2011 </div>
-                        <div class="label_wrapper"> Prescription: </div>
-                        <div> Altace: </div>
-                        <div class="label_wrapper"> Status: </div>
-                        <div> Did not take: </div>
-                        <div class="label_wrapper"> Comment: </div>
-                        <div> It makes my heart hurt. </div>
-                     </div>
-                     <div class="suggestion_wrapper">
-                        <div class="label_wrapper"> Suggestion: </div>
-                        <div> Stop taking it immediately. That's a rare and dangerous side effect. </div>
-                     </div>
-                     <div class="suggestion_input_wrapper"><textarea onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Write a suggestion...':this.value;" value="Write a suggestion..."></textarea></input></div>
-                     <input type="button" value="Send suggestion" class="send_suggestion"></input>   
+               
+               <c:forEach var="alert" items="${alerts}">
+               		<!-- single message box -->
+               		<div class="message_wrapper">
+                  	<div class="pic_label_wrapper"><img src="/resources/images/sample.png" /></div>
+                  	<div class="inner_message_wrapper">
+                    	<h3><a href=""> ${patientUserNames[alert.patient.name]} </a></h3>
+                     	<div class="patient_message_wrapper">
+                        	<div class="label_wrapper"> Date: </div>
+                        	<div>${alert.date}</div>
+                        	<div class="label_wrapper"> Prescription: </div>
+                        	<div>${alert.medication}</div>
+                        	<div class="label_wrapper"> Status: </div>
+                        	<div>${alert.took}</div>
+                        	<div class="label_wrapper"> Comment: </div>
+                        	<div>${alert.comment}</div>
+                     	</div>
+                     	<div class="suggestion_wrapper">
+                        	<div class="label_wrapper"> Suggestion: </div>
+                        	<div>${alert.response}</div>
+                     	</div>
+                     	<div class="suggestion_input_wrapper"><textarea onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Write a suggestion...':this.value;" value="Write a suggestion..."></textarea></input></div>
+                     	<input type="button" value="Send suggestion" class="send_suggestion"></input>   
                   </div>
                </div>
+               </c:forEach>
+               
+               
             </div>
             <!-- right panels -->
             <div id="right">
