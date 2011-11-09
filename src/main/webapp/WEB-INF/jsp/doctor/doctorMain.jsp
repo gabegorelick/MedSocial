@@ -5,10 +5,8 @@
       <title> Doctor Homepage </title>
       <link rel="stylesheet" type="text/css" href="/resources/styles/doctor/doctor_style.css">
    </head>
-   <body>
-      <form id="editRx_form" name=editRx_form method="post" name="input" action="">
-         
-         <!-- header -->
+   <body>         
+      	<!-- header -->
          <div id="header">
             <div id="title_wrapper">
                <h1> MedSocial </h1>
@@ -55,8 +53,12 @@
                         	<div class="label_wrapper"> Suggestion: </div>
                         	<div>${alert.response}</div>
                      	</div>
-                     	<div class="suggestion_input_wrapper"><textarea onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Write a suggestion...':this.value;" value="Write a suggestion..."></textarea></input></div>
-                     	<input type="button" value="Send suggestion" class="send_suggestion"></input>   
+                     	<form action="/doctor/${user.userId}/alerts/${alert.id}/respond" method="post">
+                     		<div class="suggestion_input_wrapper">
+                     			<textarea name="response" onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Write a suggestion...':this.value;" value="Write a suggestion..."></textarea>
+                     		</div>
+                     		<div><input type="submit" value="Send suggestion" class="send_suggestion"/></div>
+                     	</form>   
                   </div>
                </div>
                </c:forEach>
@@ -84,6 +86,5 @@
             </div>
          </div>
          
-      </form>
    </body>
 </html>

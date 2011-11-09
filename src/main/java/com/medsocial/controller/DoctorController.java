@@ -79,8 +79,8 @@ public class DoctorController {
 		return "doctor/addPatient";
 	}
 	
-	@RequestMapping(value = "/alerts/${alertId}/respond", method = RequestMethod.POST)
-	public ModelAndView respond(@PathVariable Long alertId, @RequestParam String response) {		
+	@RequestMapping(value = "/{userId}/alerts/{alertId}/respond", method = RequestMethod.POST)
+	public ModelAndView respond(@PathVariable(value = "alertId") Long alertId, @RequestParam String response) {		
 		logger.debug("Got response {}", response);
 		
 		Alert alert = dao.getAlert(alertId);
