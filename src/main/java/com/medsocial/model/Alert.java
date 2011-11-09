@@ -1,5 +1,7 @@
 package com.medsocial.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -25,13 +27,15 @@ public class Alert {
 		
 	private boolean took;
 	
+	private Date date;
+	
 	/**
 	 * Doctor's response
 	 */
 	private String response;
 	
 	public Alert() {
-		
+		date = new Date();
 	}
 
 	public long getId() {
@@ -69,6 +73,14 @@ public class Alert {
 	public boolean took() {
 		return took;
 	}
+	
+	/**
+	 * Alias for {@link #took()}. For JSTL EL. 
+	 * @return
+	 */
+	public boolean getTook() {
+		return took();
+	}
 
 	/**
 	 * 
@@ -86,6 +98,14 @@ public class Alert {
 		this.response = response;
 	}
 	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	/**
 	 * Actions a patient can take for a given alert.
 	 * @author Gabe Gorelick
