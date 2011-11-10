@@ -38,7 +38,7 @@
                		<div class="message_wrapper">
                   	<div class="pic_label_wrapper"><img src="/resources/images/sample.png" /></div>
                   	<div class="inner_message_wrapper">
-                    	<h3><a href=""> ${patientUserNames[alert.patient.name]} </a></h3>
+                    	<h3><a href="/doctor/${user.userId}/patients/${alert.patient.name}">${patientUserNames[alert.patient.name]}</a></h3>
                      	<div class="patient_message_wrapper">
                         	<div class="label_wrapper"> Date: </div>
                         	<div>${alert.date}</div>
