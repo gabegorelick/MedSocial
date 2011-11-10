@@ -77,6 +77,11 @@ public class DoctorController {
 		return mav;
 	}
 	
+	@RequestMapping("/{userId}/patients/{patientId}")
+	public String getPatient(@PathVariable("userId") String userId, @PathVariable("patientId") String patientId) {
+		return "doctor/patient";
+	}
+	
 	@RequestMapping("/{userId}/prescriptions/edit")
 	public String editPrescription() {
 		return "doctor/editPrescription";
