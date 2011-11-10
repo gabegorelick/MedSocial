@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.appengine.api.users.UserServiceFactory;
+import com.googlecode.objectify.Key;
 import com.medsocial.dao.UserRegistry;
+import com.medsocial.model.Doctor;
 import com.medsocial.model.GaeUser;
 import com.medsocial.security.AppRole;
 import com.medsocial.security.GaeUserAuthentication;
@@ -65,6 +67,7 @@ public class RegistrationController {
 		user.setSurname(form.getSurname());
 		user.setAuthorities(roles);
 		user.setEnabled(true);
+		user.setDoctor(new Key<Doctor>(Doctor.class, form.getDoctorId()));
 
 		registry.registerUser(user);
 

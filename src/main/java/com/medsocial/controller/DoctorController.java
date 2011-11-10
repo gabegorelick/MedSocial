@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.medsocial.dao.MedSocialDao;
 import com.medsocial.dao.UserRegistry;
 import com.medsocial.model.Alert;
+import com.medsocial.model.Doctor;
+import com.medsocial.model.Patient;
 
 @Controller
 @RequestMapping("/doctor")
@@ -50,15 +53,20 @@ public class DoctorController {
 		logger.debug("Adding {} to alerts", alerts);
 		mav.addObject("alerts", alerts);
 		
+		Doctor doctor = ofy.get(new Key<Doctor>(Doctor.class, auth.getName()));
+		mav.addObject("doctor", doctor);
+		
 		Map<String, String> patientUserNames = new HashMap<String, String>();
-		for (Alert a : alerts) {
-			String id = a.getPatient().getName();
-			if (!patientUserNames.containsKey(id)) {
-				String name = userRegistry.findUser(id).getNickname();
-				patientUserNames.put(id, name);
+		for (Key<Patient> p : doctor.getPatients()) {
+			if (!patientUserNames.containsKey(p.getName())) {
+				String name = userRegistry.findUser(p.getName()).getNickname();
+				patientUserNames.put(p.getName(), name);
 			}
 		}
 		mav.addObject("patientUserNames", patientUserNames);
+				
+		Map<Key<Patient>, Patient> patients = ofy.get(doctor.getPatients());
+		mav.addObject("patients", patients);
 						
 		return mav;
 	}

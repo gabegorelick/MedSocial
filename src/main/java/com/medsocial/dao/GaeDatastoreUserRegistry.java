@@ -58,6 +58,14 @@ public class GaeDatastoreUserRegistry implements UserRegistry {
         	Patient pat = new Patient(newUser);
         	objectify.put(pat);
         	cacheManager.getCache("patients").put(pat.getUserId(), pat);
+        	
+        	Key<Doctor> doc = pat.getDoctor();
+        	if (doc != null) {
+        		Doctor doctor = objectify.get(doc);
+        		doctor.addPatient(pat);
+        		objectify.put(doctor);
+        		cacheManager.getCache("doctors").put(doctor.getUserId(), doctor);
+        	}
         }
         
         cacheManager.getCache("users").put(newUser.getUserId(), newUser);

@@ -25,6 +25,7 @@ public class Patient {
 	public Patient(GaeUser user) {
 		userId = user.getUserId();
 		this.user = new Key<GaeUser>(GaeUser.class, user.getUserId());
+		doctor = user.getDoctor();
 	}
 
 	public String getUserId() {

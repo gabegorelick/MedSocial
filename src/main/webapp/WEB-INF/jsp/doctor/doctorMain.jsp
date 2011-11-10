@@ -70,18 +70,12 @@
                <h2 id="patients_title"> Patients </h2>
                <button id="add_remove_patients"> Add/Remove </button>
                <table>
-                  <tr>
-                     <td><img src="/resources/images/sample.png" /></td>
-                     <td><a href=""> Patient 1 </a></td>
-                  </tr>
-                  <tr>
-                     <td><img src="/resources/images/sample.png" /></td>
-                     <td><a href=""> Patient 2 </a></td>
-                  </tr>
-                  <tr>
-                     <td><img src="/resources/images/sample.png" /></td>
-                     <td><a href=""> Patient 3 </a></td>
-                  </tr>
+               		<c:forEach var="patient" items="${patients}">
+               			<tr>
+                     		<td><img src="/resources/images/sample.png" /></td>
+                     		<td><a href="/doctor/${user.userId}/patients/${patient.value.userId}">${patientUserNames[patient.key.name]}</a></td>
+                  		</tr>	
+               		</c:forEach>
                </table>
             </div>
          </div>

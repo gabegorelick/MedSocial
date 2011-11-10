@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Id;
 
+import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Entity;
 import com.medsocial.security.AppRole;
 
@@ -28,6 +29,9 @@ public class GaeUser implements Serializable {
 	private Set<AppRole> authorities;
 	
 	private boolean enabled;
+	
+	// TODO this is a hack, we shouldn't store patient-specific fields on this generic class
+	private Key<Doctor> doctor;
 	
 	public GaeUser() {
 		authorities = EnumSet.noneOf(AppRole.class);
@@ -88,5 +92,13 @@ public class GaeUser implements Serializable {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public Key<Doctor> getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Key<Doctor> doctor) {
+		this.doctor = doctor;
 	}
 }

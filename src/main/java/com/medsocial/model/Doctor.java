@@ -1,5 +1,8 @@
 package com.medsocial.model;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -15,7 +18,7 @@ public class Doctor {
 	@Unindexed
 	private Key<GaeUser> user;
 	
-	private Key<Patient> patient;
+	private Collection<Key<Patient>> patients;
 	
 	@SuppressWarnings("unused")
 	private Doctor() {
@@ -25,6 +28,7 @@ public class Doctor {
 	public Doctor(GaeUser user) {
 		userId = user.getUserId();
 		this.user = new Key<GaeUser>(GaeUser.class, user.getUserId());
+		patients = new HashSet<Key<Patient>>();
 	}
 
 	public String getUserId() {
@@ -35,12 +39,20 @@ public class Doctor {
 		return user;
 	}
 
-	public Key<Patient> getPatient() {
-		return patient;
+	public Collection<Key<Patient>> getPatients() {
+		return patients;
 	}
 
-	public void setPatient(Patient patient) {
-		this.patient = new Key<Patient>(Patient.class, patient.getUserId());
+	public void setPatients(Collection<Key<Patient>> patients) {
+		this.patients = patients;
+	}
+	
+	public void addPatient(Patient patient) {
+		// patients can be null from schema migrations
+		if (patients == null) {
+			patients = new HashSet<Key<Patient>>();
+		}
+		patients.add(new Key<Patient>(Patient.class, patient.getUserId()));
 	}
 
 }
