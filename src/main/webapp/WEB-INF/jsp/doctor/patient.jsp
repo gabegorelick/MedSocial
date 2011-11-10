@@ -54,6 +54,7 @@
                         	<div>${alert.response}</div>
                      	</div>
                      	<form action="/doctor/${user.userId}/alerts/${alert.id}/respond" method="post">
+                     		<input type="hidden" name="location" value="patient"/> <!-- tells server to redirect back to this page -->
                      		<div class="suggestion_input_wrapper">
                      			<textarea name="response" onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Write a suggestion...':this.value;" value="Write a suggestion..."></textarea>
                      		</div>

@@ -103,14 +103,21 @@ public class DoctorController {
 	}
 	
 	@RequestMapping(value = "/{userId}/alerts/{alertId}/respond", method = RequestMethod.POST)
-	public ModelAndView respond(@PathVariable(value = "alertId") Long alertId, @RequestParam String response) {		
+	public ModelAndView respond(@PathVariable("userId") String userId, @PathVariable("alertId") Long alertId, 
+			@RequestParam String response, @RequestParam(required = false) String location) {
+		
 		logger.debug("Got response {}", response);
 		
 		Alert alert = dao.getAlert(alertId);
 		alert.setResponse(response);
 		dao.putAlert(alert);				
 		
-		ModelAndView mav = new ModelAndView("redirect:/doctor");
+		ModelAndView mav = new ModelAndView();
+		if ("patient".equals(location)) {
+			mav.setViewName("redirect:/doctor/"+ userId + "/patients/" + alert.getPatient().getName());
+		} else {
+			mav.setViewName("redirect:/doctor");
+		}
 		return mav;
 	}
 	
