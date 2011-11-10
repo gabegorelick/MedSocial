@@ -16,9 +16,9 @@
                <input type="text" value="Find patients..." onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Find patients...':this.value;" />
                <input type="button" value="Search" />
             </div>
-            <div id="default_btns">   
-               <button> Home </button>
-               <button> Logout </button>
+            <div id="default_btns">
+            	<a href="/home">Home</a>
+            	<a href="/logout">Logout</a>
             </div>
          </div>
          
