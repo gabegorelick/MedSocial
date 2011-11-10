@@ -78,8 +78,18 @@ public class DoctorController {
 	}
 	
 	@RequestMapping("/{userId}/patients/{patientId}")
-	public String getPatient(@PathVariable("userId") String userId, @PathVariable("patientId") String patientId) {
-		return "doctor/patient";
+	public ModelAndView getPatient(@PathVariable("userId") String userId, @PathVariable("patientId") String patientId) {
+		ModelAndView mav = new ModelAndView("doctor/patient");
+		
+		Objectify ofy = objectifyFactory.begin();
+		
+		// TODO only get relevant messages
+		List<Alert> alerts = ofy.query(Alert.class).list();
+				
+		logger.debug("Adding {} to alerts", alerts);
+		mav.addObject("alerts", alerts);
+		
+		return mav;
 	}
 	
 	@RequestMapping("/{userId}/prescriptions/edit")
