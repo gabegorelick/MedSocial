@@ -47,7 +47,15 @@ public class DoctorController {
 	@ModelAttribute("doctor")
 	public Doctor getDoctor(Authentication auth) {
 		Objectify ofy = objectifyFactory.begin();
-		return ofy.get(new Key<Doctor>(Doctor.class, auth.getName()));
+		Doctor doc = ofy.find(new Key<Doctor>(Doctor.class, auth.getName()));
+		if (doc == null) {
+			// hack for datastore migrations
+			doc = new Doctor((GaeUser) auth.getPrincipal());
+			ofy.put(doc);
+		}
+		
+		return doc;
+		
 	}
 	
 	@ModelAttribute("alerts")

@@ -40,7 +40,7 @@ public class Doctor {
 	}
 
 	public Collection<Key<Patient>> getPatients() {
-		return patients;
+		return patients == null ? new HashSet<Key<Patient>>() : patients;
 	}
 
 	public void setPatients(Collection<Key<Patient>> patients) {
