@@ -69,7 +69,7 @@
             <!-- right panels -->
             <div id="right">
                <h2 id="patients_title"> Prescriptions </h2>
-               <button id="add_remove_patients"> Edit Prescriptions </button>
+               <a id="add_remove_patients" href="/doctor/${user.userId}/prescriptions/edit">Edit Prescriptions</a>
                <table>
                   <tr><td>
                      <a href=""> Altace </a>
