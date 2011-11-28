@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head><title>Alert</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <link rel="stylesheet" type="text/css" href="patient_style.css">
+      <link rel="stylesheet" type="text/css" href="calendrical.css">
+      <script src="jquery-1.6.2.min.js"></script>
+      <script src="jquery.calendrical.js"></script>
+      <script type="text/javascript">
+         $(document).ready(function(){
+            $("#remind_time").calendricalTime();
+            //if "Remind me later" is selected, enable remind_time
+            $("#take_now").click(function(){ $("#remind_time").attr("disabled", true); });
+            $("#remind_later").click(function(){ $("#remind_time").attr("disabled", false); });
+            $("#not_taking").click(function(){ $("#remind_time").attr("disabled", true); });
+            //if "Send a comment == yes", enable comment
+            $("#send_true").click(function(){ $("#comment").attr("disabled", false); });
+            $("#send_false").click(function(){ $("#comment").attr("disabled", true); });
+         });
+         function validate(){
+            var radios = document["alert_form"].elements["action"];
+            for (var i=0; i <radios.length; i++) {
+               if (radios[i].checked)
+                  return true;
+            }
+            alert("Please select an action");
+            return false;
+         }
+         
+      </script>
+   </head>
+   <body>
+      <form id="alert_form" name="alert_form" method="post" name="input" onsubmit="return validate()" action="">
+         <div id="main_wrapper">
+            <div id="header_wrapper"></div>
+            <div id="content_wrapper">
+               <h2> RX NAME </h2>
+               <div id="action_label_wrapper" class="col_label"> Action*: </div>
+               <div id="action_input_wrapper" class="col_input">
+                  <input type="radio" name="action" id="take_now" value="take_now"> Take Now </input><br />
+                  <input type="radio" name="action" id="remind_later" value="remind_later"> Remind Me Later </input><br />
+                  <input type="radio" name="action" id="not_taking" value="not_taking"> Not Taking </input>
+               </div>
+               <div id="remindTime_label" class="col_label"> Remind me at: </div>
+               <div id="remindTime_input" class="col_input"><input type="text" id="remind_time" disabled=true /></div>
+               <div id="send_label_wrapper" class="col_label"> Send a comment? </div>
+               <div id="send_input_wrapper" class="col_input">
+                  <input type="radio" name="send" id="send_false" value="send_false"> No </input><br />
+                  <input type="radio" name="send" id="send_true" value="send_true"> Yes </input>
+               </div>
+               <div id="comment_label_wrapper" class="col_label"> Comment: </div>
+               <div id="comment_input_wrapper" class="col_input"><textarea id="comment"></textarea></div>
+               <div id="required_expl_wrapper"><p id="required_expl"> * indicates a required field. </p></div>
+               <div id="button_bar"><input type="submit" id="save" value="Submit" /></div>
+            </div> <!-- end content_wrapper -->
+         </div> <!-- end main_wrapper -->
+      </form>
+   </body>
+</html>
