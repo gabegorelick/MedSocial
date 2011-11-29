@@ -61,16 +61,15 @@
 	      <div class="wrapper" style="top:10px;left:150px;">
                 <input id="logoutbutton" class="component button font_cursive" value="logout" style="width: 40px; min-width: 40px; height: 20px; font-size: 9px;" type="button" onClick="changePage('login.html');">
                     </div>
-              <div class="wrapper" style="top:286px;left:20px;">
-                <input id="button_8" class="component button font_cursive" value="Add a Prescription" type="button" onClick="startSession('addprescription','prescriptionsadd.html');">
-                       </div>
-              <div class="wrapper center" style="top:286px;margin-left:80px;">
-                <input id="button_15" class="component button font_cursive" value="Done" type="button" onClick="changePage('main.html');">
-                    </div>
+              
               <div class="wrapper" style="top:76px;left:9px;">
                 <div style="height:200px;width:215px;overflow:auto;">
 			
 		      <div id="prescswindow"></div>
+		      <div style="width: 215px;">
+		      	<input id="button_8" class="component button font_cursive" style="right:55px" value="Add prescription" type="button" onClick="startSession('addprescription','prescriptionsadd.html');">
+		      	<input id="button_15" class="component button font_cursive" style="right:0px;" value="Done" type="button" onClick="changePage('main.html');">
+		      </div>
 			</div>
 		</div>
             </div>

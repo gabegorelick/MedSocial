@@ -442,13 +442,13 @@ function populatePrescriptions(){
 			
 			name = name.replace(/[.|\s]/g,"");
 			var alertson = prescattr[1];
-			$("#prescswindow").append("<div id="+name + "p> <div id="+name+"pstart/> </div>");
-		   	$("#"+name+"pstart").append('<span>__________________________</span>');
-			$("#"+name+"pstart").append("<input type='button' style='float:right;' value='details' onClick=startSession('"+name+"','prescriptionsedit.html'); />");
+			var startId = name + 'pstart';
+			$("#prescswindow").append('<div class="addPrescriptionBlock" style="border:1px solid black;" id="' + name + 'p">' + '<div id="' + startId + '"/> </div>');
+			$("#"+ startId).append("<input type='button' style='float:right;' value='details' onClick=startSession('"+name+"','prescriptionsedit.html'); />");
 			
-			$("#"+name+"pstart").append("<input type='button' style='float:right;' value='remove' onClick=removePresc('"+prescsarray[i]+"'); />");
-			$("#"+name+"pstart").append('<p>name: '+name+'</p>');
-			$("#"+name+"pstart").append('<p>alerts: '+alertson+'</p>');
+			$("#"+ startId).append("<input type='button' style='float:right;' value='remove' onClick=removePresc('"+prescsarray[i]+"'); />");
+			$("#"+ startId).append('<p>name: '+name+'</p>');
+			$("#"+ startId).append('<p>alerts: '+alertson+'</p>');
 		}
 	}
 }
@@ -462,13 +462,12 @@ function populatePrescriptionsForEdit(){
 			
 			name = name.replace(/[.|\s]/g,"");
 			var alertson = prescattr[1];
-			$("#prescswindow").append("<div id="+name + "p> <div id="+name+"pstart/> </div>");
-		   	$("#"+name+"pstart").append('<span>__________________________</span>');
-			$("#"+name+"pstart").append("<input type='button' style='float:right;' value='details' onClick=startSession('"+name+"session','prescriptionsedit.html'); />");
-			
-			$("#"+name+"pstart").append("<input type='button' style='float:right;' value='remove' onClick=removePresc('"+prescsarray[i]+"'); />");
-			$("#"+name+"pstart").append('<p>name: '+name+'</p>');
-			$("#"+name+"pstart").append('<p>alerts: '+alertson+'</p>');
+			var startId = name + 'pstart';
+			$("#prescswindow").append('<div class="addPrescriptionBlock" id="' + name + 'p">');
+			$('#' + name + 'p').append('<div>Name: '+name+'</div>')
+				.append('<div>Alerts: '+alertson+'</div>')
+				.append("<input type='button' style='float:right;' value='details' onClick=startSession('"+name+"','prescriptionsedit.html'); />")
+				.append("<input type='button' style='float:right;' value='remove' onClick=removePresc('"+prescsarray[i]+"'); />")
 		}
 	}
 }

@@ -141,3 +141,11 @@ input[type="checkbox"], input[type="radio"], .input_label { display: inline-bloc
 .bar_chart, .line_chart, .pie_chart { width: 200px; height: 200px; }
 .h_line { border-top: 1px solid; }
 .v_line { border-left: 1px solid; }
+
+.addPrescriptionBlock {
+	height: 55px;
+	padding: 5px;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
