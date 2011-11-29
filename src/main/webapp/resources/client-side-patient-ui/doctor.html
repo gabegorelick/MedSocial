@@ -1,95 +1,137 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head>
-    <title>Patient UI</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="a HTML prototype page created with App Sketcher">
-    <link href="patientUI_files/jquery-ui.css" rel="stylesheet" type="text/css">
-    <link href="patientUI_files/page.css" rel="stylesheet" type="text/css">
-    <script language="javascript" src="patientUI_files/jquery.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jquery-ui.js" type="text/javascript"></script>
-    <!--[if IE]><script language="javascript" src="scripts/excanvas.min.js" type="text/javascript"></script><![endif]-->
-    <script language="javascript" src="patientUI_files/jquery_003.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jqplot.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jqplot_002.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jqplot_003.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/jquery_002.js" type="text/javascript"></script>
-    <script language="javascript" src="patientUI_files/page.js" type="text/javascript"></script>
-     <script type="text/javascript" src="patientUI_files/patientUI.js"></script>
-  
-    <style type="text/css">
-      .tooltip {display:none;color:black;background-color:#ffa;border:1px solid #cc9;max-width: 300px; padding:3px;font-size:13px;-moz-box-shadow: 2px 2px 11px #666;-webkit-box-shadow: 2px 2px 11px #666;}
-    </style>
-    <script>
-     $(document).ready( function() {
-    populateDoctors();
-    populateDoctorInvites();
-    });
-      $(function() {
-        $(".date_field").datepicker({
-          showOn: "button",
-          buttonImage: "images/icons/calendar.png",
-          buttonImageOnly: true
-        });
+<html>
+<head>
+<title>Patient UI</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description"
+	content="a HTML prototype page created with App Sketcher">
+<link href="patientUI_files/jquery-ui.css" rel="stylesheet"
+	type="text/css">
+<link href="patientUI_files/page.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="patientUI_files/jquery.js"
+	type="text/javascript"></script>
+<script language="javascript" src="patientUI_files/jquery-ui.js"
+	type="text/javascript"></script>
+<!--[if IE]><script language="javascript" src="scripts/excanvas.min.js" type="text/javascript"></script><![endif]-->
+<script language="javascript" src="patientUI_files/jquery_003.js"
+	type="text/javascript"></script>
+<script language="javascript" src="patientUI_files/jqplot.js"
+	type="text/javascript"></script>
+<script language="javascript" src="patientUI_files/jqplot_002.js"
+	type="text/javascript"></script>
+<script language="javascript" src="patientUI_files/jqplot_003.js"
+	type="text/javascript"></script>
+<script language="javascript" src="patientUI_files/jquery_002.js"
+	type="text/javascript"></script>
+<script language="javascript" src="patientUI_files/page.js"
+	type="text/javascript"></script>
+<script type="text/javascript" src="patientUI_files/patientUI.js"></script>
 
-        $(".accordion").accordion({
-          autoHeight: false,
-          navigation: true
-        });
+<style type="text/css">
+.tooltip {
+	display: none;
+	color: black;
+	background-color: #ffa;
+	border: 1px solid #cc9;
+	max-width: 300px;
+	padding: 3px;
+	font-size: 13px;
+	-moz-box-shadow: 2px 2px 11px #666;
+	-webkit-box-shadow: 2px 2px 11px #666;
+}
+</style>
+<script>
+	$(document).ready(function() {
+		populateDoctors();
+		populateDoctorInvites();
+	});
+	$(function() {
+		$(".date_field").datepicker({
+			showOn : "button",
+			buttonImage : "images/icons/calendar.png",
+			buttonImageOnly : true
+		});
 
-        $(".tabs").tabs();
+		$(".accordion").accordion({
+			autoHeight : false,
+			navigation : true
+		});
 
-        $(".slider").slider({value: 30});
+		$(".tabs").tabs();
 
-        $(".v_slider").slider({orientation: "vertical", value: 30});
+		$(".slider").slider({
+			value : 30
+		});
 
-        $(".jquery_button").button();
+		$(".v_slider").slider({
+			orientation : "vertical",
+			value : 30
+		});
 
-        $(".annotation").tooltip({position: "bottom right", offset: [10, 10]});
-      });
-    </script>
-  </head>
-  <body class="body ui-widget ui-widget-content">
-    <span class="tooltip">&nbsp;</span>
-    <div id="content" class="content center" style="width:240px;min-width:240px;margin-top:20px;">
-      <div id="main" class="main" style="height:320px;">
-           <div id="view_5" class="view" style="height:317px;">
-              <div class="wrapper" style="top:4px;left:1px;">
-                <img id="image_7" class="component image" src="patientUI_files/Banner.jpg" style="width: 231px; min-width: 231px; height: 35px;">
-              </div>
-              <div class="wrapper" style="top:41px;left:7px;">
-                <span id="label_11" class="component label font_cursive" style="font-size:150%;">Doctors</span>
-              </div>
-              <div class="wrapper center" style="top:172px;margin-left:0px;">
-                <input id="button_9" class="component button font_cursive" value="Add a Doctor" type="button" onClick="changePage('doctoradd.html');">
-                     </div>
-		     <div class="wrapper" style="top:10px;left:150px;">
-                <input id="logoutbutton" class="component button font_cursive" value="logout" style="width: 40px; min-width: 40px; height: 20px; font-size: 9px;" type="button" onClick="changePage('login.html');">
-                    </div>
-              <div class="wrapper" style="top:198px;left:10px;">
-                <span id="label_13" class="component label font_cursive" style="font-size:150%;">Invitations</span>
-              </div>
-              <div class="wrapper center" style="top:289px;margin-left:85px;">
-                <input id="button_14" class="component button font_cursive" value="Done" type="button" onClick="changePage('main.html');">
-                  </div>
-              <div class="wrapper" style="top:66px;left:10px;">
-                <div style="height:100px;width:215px;overflow:auto;">
-			
-		      <div id="docswindow"></div>
+		$(".jquery_button").button();
+
+		$(".annotation").tooltip({
+			position : "bottom right",
+			offset : [ 10, 10 ]
+		});
+	});
+</script>
+</head>
+<body class="body ui-widget ui-widget-content">
+	<span class="tooltip">&nbsp;</span>
+	<div id="content" class="content center"
+		style="width: 240px; min-width: 240px; margin-top: 20px;">
+		<div id="main" class="main" style="height: 320px;">
+			<div id="view_5" class="view" style="height: 317px;">
+				<div class="wrapper" style="top: 4px; left: 1px;">
+					<img id="image_7" class="component image"
+						src="patientUI_files/Banner.jpg"
+						style="width: 231px; min-width: 231px; height: 35px;">
+				</div>
+				<div class="wrapper" style="top: 10px; left: 150px;">
+					<input id="logoutbutton" class="component button font_cursive"
+						value="logout"
+						style="width: 40px; min-width: 40px; height: 20px; font-size: 9px;"
+						type="button" onClick="changePage('login.html');">
+				</div>
+				<div class="wrapper" style="top: 41px; left: 7px">
+					<span id="label_11" class="component label font_cursive"
+						style="font-size: 150%;">Doctors</span> 
+					<input id="button_9"
+						class="button" value="Add doctor" type="button"
+						onClick="changePage('doctoradd.html');"
+						style="right:0px; position:absolute;">
+					<div style="top: 66px; left: 10px;">
+						<div style="width: 215px; overflow: auto;">
+
+							<div id="docswindow"></div>
+						</div>
+					</div>
+					<div>
+						<span id="label_13" class="label font_cursive"
+							style="font-size: 150%;">Invitations</span>
+						<div style="width: 215px; overflow: auto;">
+
+							<div id="docinvswindow"></div>
+							<div>
+								<input id="button_14" class="component button font_cursive"
+									value="Done" type="button" onClick="changePage('main.html');"
+									style="right: 0px;">
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
 			</div>
-              </div>
-              <div class="wrapper" style="top:227px;left:11px;">
-                 <div style="height:60px;width:215px;overflow:auto;">
-			
-		      <div id="docinvswindow"></div>
-			</div>
-              </div>
-              </div>
-            </div>
-            
-          
-      </div>
-    </div>
-     
-    <span style="position: fixed; top: 2px; right: 2px;"><a href="file:///C:/Users/Ricky/AppData/Roaming/com.appwork.appsketcher/Local%20Store/projects/P-1767B474-47CB-EB33-C41F-556658E871A7/site.map.html"><img src="patientUI_files/sitemap.png" title="Site Map" border="0" height="23" width="23"></a></span>
-  
-<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div></body></html>
+		</div>
+
+
+	</div>
+	<div id="ui-datepicker-div"
+		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+</body>
+</html>

@@ -149,3 +149,19 @@ input[type="checkbox"], input[type="radio"], .input_label { display: inline-bloc
 	border: 1px solid black;
 	border-radius: 5px;
 }
+
+.docInvitesBlock {
+	height: 75px;
+	padding: 5px;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.doctorBlock {
+	height: 75px;
+	padding: 5px;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+}

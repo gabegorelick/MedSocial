@@ -400,14 +400,11 @@ function populateDoctors(){
 			name = name.replace(/[.|\s]/g,"");
 			var email = docattr[1];
 			var desc = docattr[2];
-			$("#docswindow").append("<div id="+name+"> <div id="+name+"start/> </div>");
-		   	$("#"+name+"start").append('<span>__________________________</span>');
-			$("#"+name+"start").append("<input type='button' style='float:right;' value='remove' onClick=removeDoc('"+docsarray[i]+"'); />");
-			$("#"+name+"start").append('<p>name: '+name+'</p>');
-			$("#"+name+"start").append('<p>e-mail: '+email+'</p>');
-			$("#"+name+"start").append('<p>description: '+desc+'</p>');
-			
-			
+			$("#docswindow").append('<div class="doctorBlock" id="' + name + 'start">');
+			$("#"+name+"start").append('<div>Name: '+name+'</div>')
+				.append('<div>E-mail: '+email+'</div>')
+				.append('<div>Description: '+desc+'</div>')
+				.append("<input type='button' style='float:right;' value='Remove' onClick=removeDoc('"+docsarray[i]+"'); />");			
 		}
 	}
 }
@@ -422,13 +419,12 @@ function populateDoctorInvites(){
 			var email = docinvattr[1];
 			var desc = docinvattr[2];
 			
-			$("#docinvswindow").append("<div id="+name+"di> <div id="+name+"distart/> </div>");
-		   	$("#"+name+"distart").append('<span>__________________________</span>');
-			$("#"+name+"distart").append("<input type='button' style='float:right;' value='accept' onClick=acceptDocInv('"+docinvsarray[i]+"'); />");
-			$("#"+name+"distart").append("<input type='button' style='float:right;' value='decline' onClick=removeDocInv('"+docinvsarray[i]+"'); />");
-			$("#"+name+"distart").append('<p>name: '+name+'</p>');
-			$("#"+name+"distart").append('<p>e-mail: '+email+'</p>');
-			$("#"+name+"distart").append('<p>description: '+desc+'</p>');
+			$("#docinvswindow").append('<div class="docInvitesBlock" id="' + name + 'di">');
+			$("#"+name+"di").append('<div>Name: '+name+'</div>')
+				.append('<div>E-mail: '+email+'</div>')
+				.append('<div>Description: '+desc+'</div>')
+				.append("<input type='button' style='float:right;' value='Accept' onClick=acceptDocInv('"+docinvsarray[i]+"'); />")
+				.append("<input type='button' style='float:right;' value='Decline' onClick=removeDocInv('"+docinvsarray[i]+"'); />");
 		}
 	}
 }
