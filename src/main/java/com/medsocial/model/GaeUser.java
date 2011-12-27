@@ -31,7 +31,7 @@ public class GaeUser implements Serializable {
 	private boolean enabled;
 	
 	// TODO this is a hack, we shouldn't store patient-specific fields on this generic class
-	private Key<Doctor> doctor;
+//	private Key<Doctor> doctor;
 	
 	public GaeUser() {
 		authorities = EnumSet.noneOf(AppRole.class);
@@ -95,10 +95,10 @@ public class GaeUser implements Serializable {
 	}
 
 	public Key<Doctor> getDoctor() {
-		return doctor;
+		return null;
 	}
 
 	public void setDoctor(Key<Doctor> doctor) {
-		this.doctor = doctor;
+//		this.doctor = doctor;
 	}
 }
