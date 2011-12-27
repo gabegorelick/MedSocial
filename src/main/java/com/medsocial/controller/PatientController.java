@@ -22,7 +22,7 @@ public class PatientController {
 	
 	@RequestMapping("/{userId}/home")
 	public String home(@PathVariable String userId) {
-		return "patient/main";
+		return "patient/home";
 	}
 	
 	@RequestMapping("/{userId}/alerts/add")
