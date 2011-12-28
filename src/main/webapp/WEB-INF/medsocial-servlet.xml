@@ -11,12 +11,17 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
         
-    <!-- component scanning, may need to turn this off for performance -->
+    <!-- component scanning -->
     <context:component-scan base-package="com.medsocial.controller"/>
     <context:component-scan base-package="com.medsocial.dao"/>
     
     <context:annotation-config />
     <mvc:annotation-driven/>
+    
+    <!-- handle static resources -->
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/lib/**" location="/lib/"/> <!-- 3rd party resources, e.g. Sencha -->
     
     <!-- HandlerInterceptors -->
     <mvc:interceptors>
@@ -24,11 +29,7 @@
     </mvc:interceptors>
     
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
-        
-    <!-- Handles GET requests for /resources/** by efficiently serving static content in the ${webappRoot}/resources dir -->
-    <!-- when deployed to GAE, static files aren't routed through webapp at all, but this will work locally -->
-	<mvc:resources mapping="/resources/**" location="/resources/" />
-    
+            
     <!-- entity scanning, may need to turn this off for performance -->
     <bean class="com.googlecode.objectify.spring.ObjectifyFactoryBean" p:basePackage="com.medsocial.model" />
     
