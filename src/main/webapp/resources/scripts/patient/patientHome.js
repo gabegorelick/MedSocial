@@ -22,15 +22,12 @@ new Ext.Application({
 		});
 
 
-
 		var calendar = new Ext.ux.TouchCalendarView({
 			mode: 'day',
 			value: new Date(),
-			minDate: (new Date()).add(Date.DAY, -40),
-			maxDate: (new Date()).add(Date.DAY, 55),
 			eventStore: new Ext.data.Store({
 				model: 'Event',
-				data: [{
+				data: [{ // TODO get real data from server
 					title: 'Penicillin',
 					dose: '2',
 					start: new Date(),
@@ -54,7 +51,6 @@ new Ext.Application({
 				iconCls: 'home',
 				xtype: 'panel',
 				layout: 'fit',
-//				scroll: 'vertical',
 				items: [calendar]
 			}, {
 				title: 'Medications',
