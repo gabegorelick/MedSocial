@@ -5,10 +5,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
                         
-    <http use-expressions="true" entry-point-ref="gaeEntryPoint">
+    <!-- <http use-expressions="true" entry-point-ref="gaeEntryPoint">
     	<intercept-url pattern="/" access="permitAll" />
     	
-    	<!-- allow access to dev console -->
+    	allow access to dev console
     	<intercept-url pattern="/_ah/**" access="permitAll"/>
     	
     	<intercept-url pattern="/resources/**" access="permitAll"/>
@@ -16,7 +16,7 @@
     	<intercept-url pattern="/register/**" access="hasRole('NEW_USER')" />
     	<intercept-url pattern="/**" access="hasRole('USER')" />
     	
-    	<!-- TODO doctor/patient roles -->
+    	TODO doctor/patient roles
     	
     	<custom-filter position="PRE_AUTH_FILTER" ref="gaeFilter" />
     	
@@ -35,6 +35,7 @@
 	<b:bean id="gaeAuthenticationProvider" class="com.medsocial.security.GoogleAccountsAuthenticationProvider">
 		<b:property name="userRegistry" ref="userRegistry" />
 	</b:bean>
+	-->
 	
 	<b:bean id="userRegistry" class="com.medsocial.dao.GaeDatastoreUserRegistry" />
 
