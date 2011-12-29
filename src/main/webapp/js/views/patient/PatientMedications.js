@@ -11,7 +11,7 @@ MedSocial.views.patient.PatientMedications = Ext.extend(Ext.Panel, {
 		onItemDisclosure: function(record, btn, index) {
 			Ext.dispatch({
 				controller: MedSocial.controllers.patient.patientMedicationController,
-				action: 'edit'
+				action: 'show'
 			});
 		}
 	}]

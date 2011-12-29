@@ -17,6 +17,7 @@
 	<script src="<c:url value='/js/stores/medicationStore.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/views/patient/PatientViewport.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/views/patient/PatientMedications.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/js/views/patient/PatientMedicationDetail.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/views/patient/PatientEditMedication.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/views/patient/PatientHome.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/controllers/patient/app.js'/>" type="text/javascript"></script>

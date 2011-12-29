@@ -7,12 +7,13 @@ MedSocial.views.patient.PatientViewport = Ext.extend(Ext.Panel, {
 	
 	initComponent: function() {
 		Ext.apply(this, {
-			// need calendar higher up in call stack (this is where IoC would be helpful)
+			// need this higher up in call stack (this is where IoC would be helpful)
 			calendar: new MedSocial.views.patient.PatientHome()
 		});
+		
 		Ext.apply(this, {
-			items: [{
-				xtype: 'tabpanel',
+			// used by controllers to go from a modal view to a non-modal view
+			tabPanel: new Ext.TabPanel({
 				fullscreen: true,
 				tabBar: {
 					dock: 'bottom',
@@ -38,7 +39,11 @@ MedSocial.views.patient.PatientViewport = Ext.extend(Ext.Panel, {
 					html: 'Notes page goes here',
 					iconCls: 'favorites'
 				}]
-			}]
+			})
+		});
+		
+		Ext.apply(this, {
+			items: [this.tabPanel]
 		});
 		
 		MedSocial.views.patient.PatientViewport.superclass.initComponent.apply(this, arguments);
