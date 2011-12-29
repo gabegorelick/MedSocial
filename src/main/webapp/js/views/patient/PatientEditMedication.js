@@ -3,16 +3,20 @@ MedSocial.views.patient.PatientEditMedication = Ext.extend(Ext.form.FormPanel, {
 		Ext.apply(this, {
 			items: [{
 				xtype: 'textfield',
-				name: 'medicationName'
+				name: 'medicationName',
+				label: 'Name'
 			}, {
 				xtype: 'textareafield',
-				name: 'directions'
+				name: 'directions',
+				label: 'Directions'
 			}, {
 				xtype: 'datepickerfield',
-				name: 'start'
+				name: 'start',
+				label: 'Start date'
 			}, {
 				xtype: 'datepickerfield',
-				name: 'end'
+				name: 'end',
+				label: 'End date'
 			}]
 		});
 		
