@@ -1,6 +1,6 @@
-Ext.namespace('MedSocial.patient');
+Ext.namespace('MedSocial.views.patient');
 
-MedSocial.patient.PatientViewport = Ext.extend(Ext.TabPanel, {
+MedSocial.views.patient.PatientViewport = Ext.extend(Ext.TabPanel, {
 	tabBar: {
 		dock: 'bottom',
 		layout: {
@@ -11,7 +11,7 @@ MedSocial.patient.PatientViewport = Ext.extend(Ext.TabPanel, {
 	initComponent: function() {
 		Ext.apply(this, {
 			// need calendar higher up in call stack (this is where IoC would be helpful)
-			calendar: new MedSocial.patient.PatientHome()
+			calendar: new MedSocial.views.patient.PatientHome()
 		});
 		Ext.apply(this, {
 			items: [{
@@ -22,8 +22,8 @@ MedSocial.patient.PatientViewport = Ext.extend(Ext.TabPanel, {
 				items: [this.calendar]
 			}, {
 				title: 'Medications',
-				html: 'Prescriptions page goes here',
-				iconCls: 'settings' // TODO use better icons
+				iconCls: 'settings', // TODO use better icons
+				items: [new MedSocial.views.patient.PatientMedications()]
 			}, {
 				title: 'Doctors',
 				html: 'Doctors page goes here',
@@ -35,6 +35,6 @@ MedSocial.patient.PatientViewport = Ext.extend(Ext.TabPanel, {
 			}]
 		});
 		
-		MedSocial.patient.PatientViewport.superclass.initComponent.apply(this, arguments);
+		MedSocial.views.patient.PatientViewport.superclass.initComponent.apply(this, arguments);
 	},
 });

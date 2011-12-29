@@ -2,9 +2,9 @@
 
 Ext.setup({
 	onReady: function() {
-		var viewport = new MedSocial.patient.PatientViewport();
+		MedSocial.views.patient.viewport = new MedSocial.views.patient.PatientViewport();
 		
 		// work around bug in TouchCalendar
-		viewport.calendar.setMode('day');
+		MedSocial.views.patient.viewport.calendar.setMode('day');
 	}
 });

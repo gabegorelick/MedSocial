@@ -14,9 +14,13 @@
 	<link href="<c:url value='/lib/sencha/Ext.ux.TouchCalendar/css/Ext.ux.TouchCalendarEvents.css'/>" rel="stylesheet" type="text/css"/>
 	
 	<script src="<c:url value='/js/models/Medication.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/js/stores/medicationStore.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/views/patient/PatientViewport.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/js/views/patient/PatientMedications.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/js/views/patient/PatientEditMedication.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/views/patient/PatientHome.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/controllers/patient/app.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/js/controllers/patient/patientMedicationController.js'/>" type="text/javascript"></script>
 	
 </head>
 <body>
