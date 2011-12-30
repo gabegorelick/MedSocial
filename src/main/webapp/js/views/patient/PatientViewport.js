@@ -29,7 +29,7 @@ MedSocial.views.patient.PatientViewport = Ext.extend(Ext.Panel, {
 				}, {
 					title: 'Medications',
 					iconCls: 'settings', // TODO use better icons
-					items: [new MedSocial.views.patient.PatientMedications()]
+					items: [new MedSocial.views.patient.PatientMedicationList()]
 				}, {
 					title: 'Doctors',
 					html: 'Doctors page goes here',

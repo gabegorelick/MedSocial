@@ -1,6 +1,6 @@
 Ext.namespace('MedSocial.views.patient');
 
-MedSocial.views.patient.PatientMedications = Ext.extend(Ext.Panel, {
+MedSocial.views.patient.PatientMedicationList = Ext.extend(Ext.Panel, {
 	layout: 'card',
 	fullscreen: true,
 	
@@ -19,6 +19,6 @@ MedSocial.views.patient.PatientMedications = Ext.extend(Ext.Panel, {
 	
 	initComponent: function() {
 		MedSocial.stores.userMedicationStore.load();
-		MedSocial.views.patient.PatientMedications.superclass.initComponent.apply(this, arguments);
+		MedSocial.views.patient.PatientMedicationList.superclass.initComponent.apply(this, arguments);
 	}
 });
