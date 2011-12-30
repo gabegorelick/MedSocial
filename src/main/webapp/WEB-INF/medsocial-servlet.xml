@@ -29,9 +29,8 @@
     </mvc:interceptors>
     
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
-            
-    <!-- entity scanning, may need to turn this off for performance -->
-    <bean class="com.googlecode.objectify.spring.ObjectifyFactoryBean" p:basePackage="com.medsocial.model" />
+    
+    <!-- <bean class="com.googlecode.objectify.spring.ObjectifyFactoryBean" p:basePackage="com.medsocial.model" /> -->
     
     <bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

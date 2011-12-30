@@ -36,7 +36,5 @@
 		<b:property name="userRegistry" ref="userRegistry" />
 	</b:bean>
 	-->
-	
-	<b:bean id="userRegistry" class="com.medsocial.dao.GaeDatastoreUserRegistry" />
 
 </b:beans>
