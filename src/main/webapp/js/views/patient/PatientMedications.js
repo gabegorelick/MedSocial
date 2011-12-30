@@ -6,12 +6,13 @@ MedSocial.views.patient.PatientMedications = Ext.extend(Ext.Panel, {
 	
 	items: [{
 		xtype: 'list',
-		itemTpl: '{name}: {dose}', // TODO use html for fancier items
+		itemTpl: '{name}: {directions}', // TODO use html for fancier items
 		store: MedSocial.stores.userMedicationStore,
 		onItemDisclosure: function(record, btn, index) {
 			Ext.dispatch({
 				controller: MedSocial.controllers.patient.patientMedicationController,
-				action: 'show'
+				action: 'show',
+				record: record
 			});
 		}
 	}],

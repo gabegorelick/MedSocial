@@ -16,7 +16,9 @@ MedSocial.controllers.patient.patientMedicationController = new Ext.Controller({
 	 * Show single medication details
 	 */
 	show: function(options) {
-		var newView = new MedSocial.views.patient.PatientMedicationDetail();
+		var newView = new MedSocial.views.patient.PatientMedicationDetail({
+			record: options.record
+		});
 		MedSocial.views.patient.viewport.setActiveItem(newView);
 	},
 	
