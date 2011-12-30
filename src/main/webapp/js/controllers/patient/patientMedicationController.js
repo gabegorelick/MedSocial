@@ -13,7 +13,7 @@ MedSocial.controllers.patient.patientMedicationController = new Ext.Controller({
 	},
 	
 	/**
-	 * Show single medication
+	 * Show single medication details
 	 */
 	show: function(options) {
 		var newView = new MedSocial.views.patient.PatientMedicationDetail();

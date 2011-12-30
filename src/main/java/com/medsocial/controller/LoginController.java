@@ -14,7 +14,7 @@ public class LoginController {
 
 	@RequestMapping
 	public String login(Principal principal, HttpServletResponse response) throws IOException {
-		return "patient/home"; // TODO real redirect logic
+		return "forward:patient/18580476422013912411/home"; // TODO real redirect logic
 		
 //		ModelAndView mav = new ModelAndView("login");
 //		mav.addObject("user", principal);

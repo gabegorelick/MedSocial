@@ -5,7 +5,7 @@ MedSocial.views.patient.PatientViewport = Ext.extend(Ext.Panel, {
 	fullscreen: true,
 	layout: 'card',
 	
-	initComponent: function() {
+	initComponent: function() {		
 		Ext.apply(this, {
 			// need this higher up in call stack (this is where IoC would be helpful)
 			calendar: new MedSocial.views.patient.PatientHome()

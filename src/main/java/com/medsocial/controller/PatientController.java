@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,8 +34,8 @@ public class PatientController {
 		return "patient/main";
 	}
 	
-	@RequestMapping(value = "/{userId}/medications", method = RequestMethod.GET)
-	public @ResponseBody Collection<Medication> getAllMedications() {
+	@ModelAttribute("medications")
+	public Collection<Medication> populateAllMedications() {
 		List<Medication> medications =  new ArrayList<Medication>();
 		
 		Medication m1 = new Medication();
@@ -53,6 +54,15 @@ public class PatientController {
 		m2.setEnd(new Date());
 		medications.add(m2);
 		
+		return medications;
+	}
+	
+	/**
+	 * Get all the user's medications. Since this data is already on the model, this handler is not strictly
+	 * necessary. It is provided for clients that want to use a more RESTful API.
+	 */
+	@RequestMapping(value = "/{userId}/medications", method = RequestMethod.GET)
+	public @ResponseBody Collection<Medication> getAllMedications(@ModelAttribute("medications") Collection<Medication> medications) {
 		return medications;
 	}
 	

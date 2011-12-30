@@ -4,7 +4,11 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.springframework.security.core.userdetails.User;
+
+import com.medsocial.web.JsonDateSerializer;
 
 @Entity
 public class Medication {
@@ -12,8 +16,14 @@ public class Medication {
 	private String id;
 	private String name;
 	private String directions;
+	
+	@JsonSerialize(using = JsonDateSerializer.class)
 	private Date start;
+	
+	@JsonSerialize(using = JsonDateSerializer.class)
 	private Date end;
+	
+	@JsonIgnore
 	private User user;
 	
 	public String getId() {

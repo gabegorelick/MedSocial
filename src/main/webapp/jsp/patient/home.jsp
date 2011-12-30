@@ -13,8 +13,24 @@
 	<script src="<c:url value='/lib/sencha/Ext.ux.TouchCalendar/js/Ext.ux.TouchCalendarEvents.js'/>" type="text/javascript"></script>
 	<link href="<c:url value='/lib/sencha/Ext.ux.TouchCalendar/css/Ext.ux.TouchCalendarEvents.css'/>" rel="stylesheet" type="text/css"/>
 	
+	<%-- write javascript variables to page --%>	
+	<script type="text/javascript">
+		Ext.namespace('MedSocial');
+		MedSocial.contextPath = "${pageContext.request.contextPath}";
+		MedSocial.userId = '18580476422013912411'; <%-- TODO get from model --%>
+	</script>
+	
 	<script src="<c:url value='/js/models/Medication.js'/>" type="text/javascript"></script>
-	<script src="<c:url value='/js/stores/medicationStore.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/js/stores/MedicationStore.js'/>" type="text/javascript"></script>
+	
+	<script type="text/javascript"> <%-- this has to be defined after the Medication model --%>
+		<%-- TouchView events don't play nicely with remote stores, so load everything locally --%>
+		MedSocial.stores.userMedicationEvents = new Ext.data.Store({
+			model: 'MedSocial.models.Medication',
+			data: <%= new org.codehaus.jackson.map.ObjectMapper().writeValueAsString(request.getAttribute("medications")) %>
+		});
+	</script>
+	
 	<script src="<c:url value='/js/views/patient/PatientViewport.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/views/patient/PatientMedications.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/views/patient/PatientMedicationDetail.js'/>" type="text/javascript"></script>
