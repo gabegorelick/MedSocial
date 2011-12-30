@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- The Basics -->
     <groupId>com.medsocial</groupId>
     <artifactId>medsocial</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
     <packaging>war</packaging>
-
     <name>MedSocial</name>
+    
+    <properties>
+    	<!-- need 3.1 for cache API -->
+    	<spring.version>3.1.0.RELEASE</spring.version>
+    	
+    	<!-- for warnings about platform dependent builds -->
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <repositories>
-        <repository>
-            <id>objectify-appengine</id>
-            <name>Objectify Maven Repository</name>
-            <url>http://objectify-appengine.googlecode.com/svn/maven</url>
-        </repository>
         <repository>
 			<id>repository.springframework.milestone</id>
 			<name>Spring Framework Maven Milestone Repository</name>
@@ -26,31 +25,33 @@
     </repositories>
 
     <dependencies>
+    	<!-- for Spring JSON support -->
     	<dependency>
-			<groupId>com.googlecode.objectify-appengine-spring</groupId>
-			<artifactId>objectify-appengine-spring</artifactId>
-			<version>1.1.1</version>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.3</version>
 		</dependency>
+    
+    	<!-- Spring stuff -->
     	<dependency>
     		<groupId>org.springframework</groupId>
     		<artifactId>spring-webmvc</artifactId>
-    		<!-- need 3.1 for cache API -->
-    		<version>3.1.0.RC1</version>
+    		<version>${spring.version}</version>
     	</dependency>
     	<dependency>
     		<groupId>org.springframework.security</groupId>
     		<artifactId>spring-security-web</artifactId>
-    		<version>3.0.7.RELEASE</version>
+    		<version>${spring.version}</version>
     	</dependency>
     	<dependency>
     		<groupId>org.springframework.security</groupId>
     		<artifactId>spring-security-config</artifactId>
-    		<version>3.0.7.RELEASE</version>
+    		<version>${spring.version}</version>
     	</dependency>
     	<dependency>
     		<groupId>org.springframework.security</groupId>
     		<artifactId>spring-security-taglibs</artifactId>
-    		<version>3.0.7.RELEASE</version>
+    		<version>${spring.version}</version>
     	</dependency>
     	
     	<!-- Spring needs cglib for random AOP stuff -->
@@ -60,6 +61,7 @@
     		<version>2.2.2</version>
     	</dependency>
     	
+    	<!-- validation -->
     	<dependency>
     		<groupId>javax.validation</groupId>
     		<artifactId>validation-api</artifactId>
@@ -70,125 +72,70 @@
     		<artifactId>hibernate-validator</artifactId>
     		<version>4.2.0.Final</version>
     	</dependency>
-    	<dependency>
+    	    	    	
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+       
+       <!-- servlet stuff -->
+       <dependency>
         	<groupId>javax.servlet</groupId>
         	<artifactId>jstl</artifactId>
         	<version>1.1.1</version>
         	<scope>runtime</scope>
     	</dependency>
     	<dependency>
-    		<groupId>javax.jdo</groupId>
-    		<artifactId>jdo-api</artifactId>
-    		<version>3.0</version>
+    		<groupId>javax.servlet.jsp</groupId>
+    		<artifactId>jsp-api</artifactId>
+    		<version>2.2</version>
+    		<scope>provided</scope>
     	</dependency>
-    	
-        <!--
-        jars from GAE's "lib/user" must be added as compile-time dependencies,
-        as described here in "Copying JARs" section:
-        http://code.google.com/appengine/docs/java/tools/ant.html
-        -->
-
         <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-1.0-sdk</artifactId>
-            <version>1.5.5</version>
-        </dependency>
-
-        <!--
-        J2EE Servlet API. We need it to compile IndexServlet class.
-        You can probably remove it, if you don't explicitly use Servlets.
-        -->
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-servlet_2.5_spec</artifactId>
-            <version>1.2</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
-            <groupId>com.googlecode.objectify</groupId>
-            <artifactId>objectify</artifactId>
-            <version>2.2.2</version>
-        </dependency>
-
-        <!--
-        Make use of JSP tags. Remove, if you don't use JSPs.
-        -->
-        <dependency>
+        	<groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
-            <groupId>taglibs</groupId>
             <version>1.1.2</version>
-            <type>jar</type>
             <scope>runtime</scope>
         </dependency>
 
-        <!--
-        These dependencies are here just for enabling logging.
-        -->
+        <!-- logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.6.0</version>
+            <version>1.6.4</version>
         </dependency>
-
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>0.9.22</version>
+            <version>1.0.0</version>
         </dependency>
 
         <!-- Test scope -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.5</version>
+            <version>4.10</version>
             <scope>test</scope>
         </dependency>
 
-        <!--
-        GAE libraries for local testing as described here:
-        http://code.google.com/appengine/docs/java/howto/unittesting.html
-        -->
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-labs</artifactId>
-            <version>1.5.5</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-stubs</artifactId>
-            <version>1.5.5</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-testing</artifactId>
-            <version>1.5.5</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
 		<plugins>  
-            <!--
-            Java compiler version
-            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.0</version>
+                <version>2.3.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
         </plugins>
