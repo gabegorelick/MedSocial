@@ -63,6 +63,12 @@ public class PatientController {
 	 */
 	@RequestMapping(value = "/{userId}/medications", method = RequestMethod.GET)
 	public @ResponseBody Collection<Medication> getAllMedications(@ModelAttribute("medications") Collection<Medication> medications) {
+		return medications; // TODO ext expects a "standard" response with status and message
+	}
+	
+	@RequestMapping(value = "/{userId}/medications", method = RequestMethod.PUT)
+	public @ResponseBody Collection<Medication> putAllMedications(@ModelAttribute("medications") Collection<Medication> medications) {
+		medications.clear();
 		return medications;
 	}
 	
