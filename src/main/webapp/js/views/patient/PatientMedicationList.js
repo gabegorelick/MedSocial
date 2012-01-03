@@ -19,6 +19,7 @@ MedSocial.views.patient.PatientMedicationList = Ext.extend(Ext.Panel, {
 	
 	initComponent: function() {
 		MedSocial.stores.userMedicationStore.load();
+		MedSocial.stores.userMedicationStore.sort('name', 'ASC');
 		MedSocial.views.patient.PatientMedicationList.superclass.initComponent.apply(this, arguments);
 	}
 });

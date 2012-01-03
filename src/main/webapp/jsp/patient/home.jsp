@@ -13,6 +13,8 @@
 	<script src="<c:url value='/lib/sencha/Ext.ux.TouchCalendar/js/Ext.ux.TouchCalendarEvents.js'/>" type="text/javascript"></script>
 	<link href="<c:url value='/lib/sencha/Ext.ux.TouchCalendar/css/Ext.ux.TouchCalendarEvents.css'/>" rel="stylesheet" type="text/css"/>
 	
+	<script src="<c:url value='/js/overrides.js'/>" type="text/javascript"></script>
+	
 	<%-- write javascript variables to page --%>	
 	<script type="text/javascript">
 		Ext.namespace('MedSocial');
@@ -27,7 +29,7 @@
 		<%-- TouchView events don't play nicely with remote stores, so load everything locally --%>
 		MedSocial.stores.userMedicationEvents = new Ext.data.Store({
 			model: 'MedSocial.models.Medication',
-			data: <%= new org.codehaus.jackson.map.ObjectMapper().writeValueAsString(request.getAttribute("medications")) %>
+			data: <%= new org.codehaus.jackson.map.ObjectMapper().writeValueAsString(((java.util.Map<?, ?>) request.getAttribute("medications")).values()) %>
 		});
 	</script>
 	
