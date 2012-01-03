@@ -4,7 +4,7 @@
 <head>
 	<title>MedSocial</title>
 		
-	<script src="<c:url value='/lib/sencha/sencha-touch/sencha-touch.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/lib/sencha/sencha-touch/sencha-touch-debug.js'/>" type="text/javascript"></script>
 	<link href="<c:url value='/lib/sencha/sencha-touch/resources/css/sencha-touch.css'/>" rel="stylesheet" type="text/css">
 	
 	<%-- TODO use minified versions when we're done debugging --%>
