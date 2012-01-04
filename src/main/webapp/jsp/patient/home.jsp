@@ -7,11 +7,14 @@
 	<script src="<c:url value='/lib/sencha/sencha-touch/sencha-touch-debug.js'/>" type="text/javascript"></script>
 	<link href="<c:url value='/lib/sencha/sencha-touch/resources/css/sencha-touch.css'/>" rel="stylesheet" type="text/css">
 	
-	<%-- TODO use minified versions when we're done debugging --%>
-	<script src="<c:url value='/lib/sencha/Ext.ux.TouchCalendar/js/Ext.ux.TouchCalendarView.js'/>" type="text/javascript"></script>
-	<link href="<c:url value='/lib/sencha/Ext.ux.TouchCalendar/css/Ext.ux.TouchCalendarView.css'/>" rel="stylesheet" type="text/css"/>
-	<script src="<c:url value='/lib/sencha/Ext.ux.TouchCalendar/js/Ext.ux.TouchCalendarEvents.js'/>" type="text/javascript"></script>
-	<link href="<c:url value='/lib/sencha/Ext.ux.TouchCalendar/css/Ext.ux.TouchCalendarEvents.css'/>" rel="stylesheet" type="text/css"/>
+	<%-- TODO use minified versions of everything when we're done debugging --%>
+		
+	<script src="<c:url value='/lib/fullcalendar/jquery-1.5.2.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/lib/fullcalendar/fullcalendar152/fullcalendar.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/lib/fullcalendar/Ext.FullCalendar.js'/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value='/lib/fullcalendar/fullcalendar152/fullcalendar.css'/>" type="text/css">
+    <link rel="stylesheet" href="<c:url value='/lib/fullcalendar/extended.css'/>" type="text/css">
+    <link rel="stylesheet" href="<c:url value='/lib/fullcalendar/ical.css'/>" type="text/css">
 	
 	<script src="<c:url value='/js/overrides.js'/>" type="text/javascript"></script>
 	
@@ -22,6 +25,7 @@
 		MedSocial.userId = '18580476422013912411'; <%-- TODO get from model --%>
 	</script>
 	
+	<script src="<c:url value='/js/models/CalendarEvent.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/models/Medication.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/stores/MedicationStore.js'/>" type="text/javascript"></script>
 	

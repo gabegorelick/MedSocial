@@ -18,5 +18,16 @@ MedSocial.models.Medication = Ext.regModel('MedSocial.models.Medication', {
 		name: 'end',
 		type: 'date',
 		dateFormat: 'U'
-	}]
+	}],
+
+	toCalendarEvent: function() {
+		var me = this;
+		
+		return Ext.ModelMgr.create({
+			id : me.get('id'),
+			title: me.get('name'),
+			start: me.get('start'),
+			end: me.get('end')
+		}, 'MedSocial.models.CalendarEvent');
+	}
 });

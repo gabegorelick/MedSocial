@@ -32,7 +32,6 @@ MedSocial.views.patient.PatientEditMedication = Ext.extend(MedSocial.views.patie
 						this.updateRecord(this.record, true);
 												
 						// don't use model.save() since that uses model's implicit proxy
-//						this.record.store.update(this.record);
 						this.record.store.sync();
 						
 						Ext.dispatch({

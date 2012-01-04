@@ -7,11 +7,6 @@ MedSocial.views.patient.PatientViewport = Ext.extend(Ext.Panel, {
 	
 	initComponent: function() {		
 		Ext.apply(this, {
-			// need this higher up in call stack (this is where IoC would be helpful)
-			calendar: new MedSocial.views.patient.PatientHome()
-		});
-		
-		Ext.apply(this, {
 			// used by controllers to go from a modal view to a non-modal view
 			tabPanel: new Ext.TabPanel({
 				fullscreen: true,
@@ -25,7 +20,7 @@ MedSocial.views.patient.PatientViewport = Ext.extend(Ext.Panel, {
 					iconCls: 'home',
 					xtype: 'panel',
 					layout: 'fit',
-					items: [this.calendar]
+					items: [new MedSocial.views.patient.PatientHome()]
 				}, {
 					title: 'Medications',
 					iconCls: 'settings', // TODO use better icons
