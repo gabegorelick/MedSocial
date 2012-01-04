@@ -26,7 +26,11 @@ MedSocial.views.patient.PatientHome = Ext.extend(Ext.FullCalendar, {
 //			
 //		},
 		eventclick : function(calEvent, jsEvent, view, fc) {
-			// TODO link to medication details
+			Ext.dispatch({
+				controller: MedSocial.controllers.patient.patientMedicationController,
+				action: 'show',
+				record: MedSocial.stores.userMedicationEvents.getById(calEvent.id)
+			});
 		}
 	}
 
