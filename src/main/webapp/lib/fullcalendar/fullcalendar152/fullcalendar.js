@@ -3695,6 +3695,9 @@ function AgendaEventRenderer() {
 		reportEventClear();
 		getDaySegmentContainer().empty();
 		getSlotSegmentContainer().empty();
+		
+		// custom event
+		trigger('eventsClear');
 	}
 	
 	

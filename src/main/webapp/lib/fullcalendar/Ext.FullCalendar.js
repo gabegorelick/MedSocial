@@ -5,9 +5,11 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 	defaultview : 'month',
 	scroll : 'vertical',
 		
+	// TODO pass all client values to fullcalendar 
+		
 	initComponent : function() {
 		var me = this;
-
+				
 		// placeholder div for fullcalendar
 		me.html = "<div id=" + me.placeholder_id + "></div>";
 
@@ -25,15 +27,6 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 				me.resumeEvents();
 			});
 		});
-
-						
-//		this.monthToolBar = new Ext.Panel({
-//			dock : 'top',
-//			id : 'monthtitle',
-//			height : 25
-//		});
-//		
-//		
 		
 		if (!me.dockedItems) {
 			me.topToolBar = me.topToolBar || new Ext.Toolbar({
@@ -102,6 +95,8 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 		me.titleComponent = me.titleComponent || me.topToolBar;
 		
 		Ext.FullCalendar.superclass.initComponent.apply(this, arguments);
+		
+		me.fullCalendar = $('#' + me.placeholder_id);
 	},
 	/**
 	 * Get Full Calendar Placeholder Id
@@ -117,16 +112,31 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 		
 //		this.eventStore.load();
 		
+		this.draggables = [];
+		
 		$('#' + me.placeholder_id).fullCalendar({
 			hideHeaders : true, //new property to hide full calendar header
-			editable : false,
+			editable : false, // drag & drop through sencha, NOT jQuery
 			allDaySlot: false,
 			events : this.calendarEvents,
 			dayClick : function(date, allDay, jsEvent, view) {
 				me.fireEvent('dayclick', date, allDay, jsEvent, view, this);
 			},
 			eventClick : function(calEvent, jsEvent, view) {
-				me.fireEvent('eventclick', calEvent, jsEvent, view, this);
+				if (!me.isDraggingCalendarEvent()) {
+					me.fireEvent('eventclick', calEvent, jsEvent, view, this);
+				}
+			},
+			eventRender: function(event, element, view) {
+				var draggable = new Ext.util.Draggable(element[0], {
+					revert: true
+				});
+
+				me.draggables.push(draggable);
+			},
+			eventsClear: function() {
+				// custom callback to prevent the list of draggables getting too big
+				me.clearDraggables();
 			},
 			columnFormat : {
 				month : 'ddd', // Mon
@@ -141,6 +151,7 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 				agendaWeek : "MMM d[ yyyy]{ '&#8212;'[ MMM] d, yyyy}"
 			}
 		});
+		
 		me.changeTitle();
 	},
 	getBottomToolBar : function() {
@@ -148,7 +159,7 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 	},
 	changeCalendarView : function(view) {
 		var me = this;
-
+		
 		$('#' + me.placeholder_id).fullCalendar('changeView', view);
 
 		// to fix issue regarding the scroll area of week and day not taking full height. 
@@ -185,19 +196,45 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 		this.changeTitle();
 	},
 	navigateCalendar : function(direction) {
-		var me = this;
 		if (direction == "left") {
-			$('#' + me.placeholder_id).fullCalendar('next');
+			$('#' + this.placeholder_id).fullCalendar('next');
 		} else if (direction == "right") {
-			$('#' + me.placeholder_id).fullCalendar('prev');
+			$('#' + this.placeholder_id).fullCalendar('prev');
 		}
-		me.changeTitle();
+		this.changeTitle();
+	},
+	
+	/**
+	 * Clear the array of Ext.Draggables. Used when calendar events are destroyed
+	 * so the array doesn't needlessly accumulate duplicate draggables.
+	 */
+	clearDraggables: function() {
+		this.draggables = [];
+	},
+	
+	/**
+	 * Returns true if user is currently dragging a calendar event.
+	 * Useful for canceling spurious events, e.g. a click while
+	 * the calendar event is being dragged. 
+	 */
+	isDraggingCalendarEvent: function() {
+		var dragging = false;
+		Ext.each(this.draggables, function(item) {
+			// don't swipe if we're in the middle of a drag
+			if (item.isDragging()) {
+				dragging = true;
+				return false;
+			}
+		});
+		return dragging;
 	},
 	applySwipeEvent : function() {
 		var me = this;
 		me.mon(me.scrollEl, {
 			swipe : function(directionobj) {
-				me.navigateCalendar(directionobj.direction);
+				if (!me.isDraggingCalendarEvent()) {
+					me.navigateCalendar(directionobj.direction);
+				}
 			}
 		});
 	},
