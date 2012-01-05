@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>MedSocial</title>
-		
+			
 	<script src="<c:url value='/lib/sencha/sencha-touch/sencha-touch-debug.js'/>" type="text/javascript"></script>
 	<link href="<c:url value='/lib/sencha/sencha-touch/resources/css/sencha-touch.css'/>" rel="stylesheet" type="text/css">
 	
@@ -44,6 +44,8 @@
 	<script src="<c:url value='/js/views/patient/PatientHome.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/controllers/patient/app.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/controllers/patient/patientMedicationController.js'/>" type="text/javascript"></script>
+	
+	<link href="<c:url value='/css/page.css'/>" rel="stylesheet" type="text/css">
 	
 </head>
 <body>

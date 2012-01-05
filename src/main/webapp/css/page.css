@@ -1,0 +1,5 @@
+.fc-content * {
+	/* Sencha's non-standard box-sizing messes up fc-calendar */
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}

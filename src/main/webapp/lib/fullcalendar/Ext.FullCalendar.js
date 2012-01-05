@@ -120,6 +120,7 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 		$('#' + me.placeholder_id).fullCalendar({
 			hideHeaders : true, //new property to hide full calendar header
 			editable : false,
+			allDaySlot: false,
 			events : this.calendarEvents,
 			dayClick : function(date, allDay, jsEvent, view) {
 				me.fireEvent('dayclick', date, allDay, jsEvent, view, this);
