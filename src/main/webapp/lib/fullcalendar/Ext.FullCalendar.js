@@ -29,11 +29,6 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 			me.scroller.on('scrollend', function() {
 				me.resumeEvents();
 			});
-			
-			me.slots = [];
-			Ext.each(Ext.DomQuery.select('.fc-view-agendaDay .fc-agenda-slots tr'), function(item) {
-				me.slots.push(new Ext.Element(item));
-			});
 		});
 		
 		if (!me.dockedItems) {
@@ -156,7 +151,7 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 						// listening for offsetchange would give us live updates, but that's
 						// way too expensive TODO check if more efficient in Touch 2.0
 						dragend: function(draggable, offset) {
-							var newTime = me.getTimeForLocation(this.region.top, calEvent.start);
+							var newTime = me.getTimeForLocation(this.region.left, this.region.top, calEvent.start);
 							if (newTime.valueOf() !== calEvent.start.valueOf) {
 								// updateEvent is very expensive, so avoid it at all costs
 								calEvent.start = newTime;
@@ -178,6 +173,24 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 			},
 			viewDisplay: function(view) {
 				me.viewName = view.name;
+				
+				me.slots = [];
+				if (me.viewName === 'agendaDay') {
+					Ext.each(Ext.DomQuery.select('.fc-view-agendaDay .fc-agenda-slots tr'), function(item) {
+						me.slots.push(new Ext.Element(item));
+					});
+				} else if (me.viewName === 'agendaWeek') {
+					Ext.each(Ext.DomQuery.select('.fc-view-agendaWeek .fc-agenda-slots tr'), function(item) {
+						me.slots.push(new Ext.Element(item));
+					});
+					
+					me.weekHeaders = [];
+					var headers = Ext.DomQuery.select('.fc-view-agendaWeek .fc-first th.fc-widget-header').splice(1, 7);
+					Ext.each(headers, function(item) {
+						me.weekHeaders.push(new Ext.Element(item));
+					});
+				}
+								
 			},
 			columnFormat : {
 				month : 'ddd', // Mon
@@ -202,9 +215,11 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 	 * function may not be able to determine month, but passing it a correctly
 	 * initialized Date ensures the return value of this function is accurate.
 	 */
-	getTimeForLocation: function(y, origDate) {
+	getTimeForLocation: function(x, y, origDate) {
+		var slots = this.slots;
+		
 		var index = 0;
-		Ext.each(this.slots, function(item, i) {
+		Ext.each(slots, function(item, i) {
 			if (item.getY() > y) {
 				return false;
 			} else {
@@ -214,8 +229,8 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 		});
 		
 		// correct time is somewhere between top and bottom
-		var top = this.slots[index].getY();
-		var bottom = this.slots[index + 1].getY();
+		var top = slots[index].getY();
+		var bottom = slots[index + 1].getY();
 		
 		var minutesPerPixel = 30 / (bottom - top);
 		var minutes = (y - top) * minutesPerPixel;
@@ -226,7 +241,7 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 		}
 		
 		// slot0 = 0 , slot1 = 0.5, etc.
-		var hour = /fc-slot(\d+)/.exec(this.slots[index].dom.className)[1] / 2;
+		var hour = /fc-slot(\d+)/.exec(slots[index].dom.className)[1] / 2;
 		time.setHours(hour);
 		
 		if (hour % 1 === 0) {
@@ -236,7 +251,28 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 			time.setMinutes(minutes + 30);
 		}
 		
+		if (Ext.isDefined(x)) {
+			time.setDate(this.getDayForLocation(x));
+		}
+		
 		return time;
+	},
+	getDayForLocation: function(x) {
+		if (this.viewName === 'agendaWeek') {
+			var index = 0;
+			Ext.each(this.weekHeaders, function(item, i) {
+				if (item.getX() > x) {
+					return false;
+				} else {
+					index = i;
+				}
+			});
+			
+			return /\d+/.exec(this.weekHeaders[index].dom.innerText);
+		} else {
+			
+		}
+				
 	},
 	getBottomToolBar : function() {
 		return this.bottomToolBar;
@@ -281,9 +317,9 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 	},
 	navigateCalendar : function(direction) {
 		if (direction == "left") {
-			$('#' + this.placeholder_id).fullCalendar('next');
-		} else if (direction == "right") {
 			$('#' + this.placeholder_id).fullCalendar('prev');
+		} else if (direction == "right") {
+			$('#' + this.placeholder_id).fullCalendar('next');
 		}
 		this.changeTitle();
 	},
