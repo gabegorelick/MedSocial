@@ -3,7 +3,7 @@ Ext.namespace('MedSocial.patient');
 MedSocial.views.patient.PatientHome = Ext.extend(Ext.FullCalendar, {
 //	eventStore: MedSocial.stores.userMedicationStore,	
 	
-	defaultview: 'agendaDay',
+	defaultView: 'agendaDay',
 	
 	initComponent: function() {
 		
