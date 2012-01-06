@@ -240,16 +240,21 @@ Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 						// way too expensive TODO check if more efficient in Touch 2.0
 						dragend: function(draggable, offset) {
 							// TODO use center of region instead of corner
-							var newTime = me.getTimeForLocation(this.region.left, this.region.top, calEvent.start);
-							if (newTime.valueOf() !== calEvent.start.valueOf) {
-								// updateEvent is very expensive, so avoid it at all costs
-								calEvent.start = newTime;
-								me.fc.fullCalendar('updateEvent', calEvent);
-
-								// events sometimes have artifacts on the left border after update,
-								// seems to be a Chrome issue, b/c it looks fine in mobile browsers
+							var newTime = me.getTimeForLocation(draggable.region.left, draggable.region.top, calEvent.start);							
+							calEvent.start = newTime;
+							me.fc.fullCalendar('updateEvent', calEvent);
+							
+							if (me.store) {
+								// update original model
+								var record = me.store.getById(calEvent.id);
+								record.set('start', calEvent.start);
+								record.set('end', calEvent.start);
 							}
-							// FIXME this isn't always triggered on Android (often need to swipe after drag)
+
+							// events sometimes have artifacts on the left border after update,
+							// seems to be a Chrome issue, b/c it looks fine in mobile browsers
+
+							// FIXME dragend isn't always triggered on Android (often need to swipe after drag)
 						}
 					}
 				});
