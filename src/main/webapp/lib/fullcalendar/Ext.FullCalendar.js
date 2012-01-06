@@ -62,7 +62,7 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 						ui : 'action',
 						pressed : (me.defaultView == "month") ? true : false,
 						handler : function() {
-							me.changeCalendarView('month');
+							me.changeCalendarView('month'); // TODO scroll to 0 after change
 						}
 					}, {
 						text : 'Week',
@@ -189,6 +189,11 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 					Ext.each(headers, function(item) {
 						me.weekHeaders.push(new Ext.Element(item));
 					});
+				} else if (me.viewName === 'month') {
+					me.monthRows = [];
+					Ext.each(Ext.DomQuery.select('.fc-view-month tbody tr'), function(item) {
+						me.monthRows.push(new Ext.Element(item));
+					});
 				}
 								
 			},
@@ -216,6 +221,10 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 	 * initialized Date ensures the return value of this function is accurate.
 	 */
 	getTimeForLocation: function(x, y, origDate) {
+		if (this.viewName === 'month') {
+			return this.getTimeForLocationMonth(x, y, origDate);
+		}
+		
 		var slots = this.slots;
 		
 		var index = 0;
@@ -251,28 +260,81 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 			time.setMinutes(minutes + 30);
 		}
 		
-		if (Ext.isDefined(x)) {
+		if (this.viewName === 'agendaWeek' || this.viewName === 'month') {
 			time.setDate(this.getDayForLocation(x));
 		}
 		
 		return time;
 	},
+	/**
+	 * If the calendar is in month view, get the time given a location.  
+	 */
+	getTimeForLocationMonth: function(x, y, origDate) {
+		if (this.viewName !== 'month') {
+			throw "must be month view";
+		}
+		
+		var index = -1;
+		Ext.each(this.monthRows, function(item) {
+			if (item.getY() > y) {
+				return false;
+			} else {
+				index++;
+			}
+		});
+		var week = this.monthRows[index];
+		
+		// iterate over days
+		var dayElement = null;
+		Ext.each(week.query('td'), function(item) {
+			item = new Ext.Element(item);
+			if (item.getX() > x) {
+				return false;
+			} else {
+				dayElement = item;
+			}
+		});
+
+		// get day of month
+		var day = dayElement.query('.fc-day-number')[0].innerText;
+
+		// get month
+		var month = $('#' + this.placeholder_id).fullCalendar('getDate').getMonth();
+		if (/fc-other-month/.test(dayElement.dom.className)) {
+			// in another month on this calendar
+			if (/fc-week0/.test(week.dom.className)) {
+				// if this is the first week, it must be the month before
+				month--;
+			} else {
+				month++;
+			}
+		}
+				
+		var time = new Date();
+		if (Ext.isDefined(origDate)) {
+			time.setTime(origDate.valueOf());
+		}
+		
+		time.setMonth(month);
+		time.setDate(day);
+		
+		// don't set hour or minute, that's too fine-grained
+		
+		return time;
+	},
 	getDayForLocation: function(x) {
 		if (this.viewName === 'agendaWeek') {
-			var index = 0;
-			Ext.each(this.weekHeaders, function(item, i) {
+			var index = -1;
+			Ext.each(this.weekHeaders, function(item) {
 				if (item.getX() > x) {
 					return false;
 				} else {
-					index = i;
+					index++;
 				}
 			});
 			
 			return /\d+/.exec(this.weekHeaders[index].dom.innerText);
-		} else {
-			
-		}
-				
+		}				
 	},
 	getBottomToolBar : function() {
 		return this.bottomToolBar;
