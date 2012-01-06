@@ -4,11 +4,7 @@ MedSocial.views.patient.PatientMedicationDetail = Ext.extend(Ext.form.FormPanel,
 		if (!Ext.isDefined(config) || !Ext.isDefined(config.record)) {
 			throw 'Must pass record in config';
 		}
-		
-		config = Ext.applyIf(config, {
-			
-		});
-				
+						
 		MedSocial.views.patient.PatientMedicationDetail.superclass.constructor.call(this, config);
 	},
 	
@@ -91,16 +87,5 @@ MedSocial.views.patient.PatientMedicationDetail = Ext.extend(Ext.form.FormPanel,
 		Ext.each(this.items.items, function(item) {
 			item.setDisabled(!editable);
 		});		
-	}
-	
-//	listeners: {
-//		// update template data
-//		// have to wait until after templates are instantianted as components
-//		render: function(me) {
-//			Ext.each(me.items.items, function(item) {
-//				item.update(me.record.data);
-//			}, me);
-//			
-//		}
-//	}	
+	}	
 });

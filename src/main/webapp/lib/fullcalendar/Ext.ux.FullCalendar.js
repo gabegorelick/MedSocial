@@ -3,7 +3,7 @@ Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 	placeholder_id : Ext.id(),
 	
 	scroll : 'vertical',
-		
+				
 	initComponent : function() {
 		var me = this;
 		
@@ -16,8 +16,8 @@ Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 		//apply fullcalender when panel is rendered
 		me.on('afterlayout', function() {
 			// cache the element so we don't have to always traverse DOM
-			me.fc = $('#' + me.placeholder_id);			
-			
+			me.fc = $('#' + me.placeholder_id);
+						
 			me.renderFullCalendar();
 			me.applySwipeEvent();
 			
@@ -101,11 +101,31 @@ Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 		
 		Ext.ux.FullCalendar.superclass.initComponent.apply(this, arguments);
 	},
+	refetchEvents: function() {
+		this.fc.fullCalendar('refetchEvents');
+	},
 	/**
 	 * Get Full Calendar Placeholder Id
 	 */
 	getPlaceHolderId : function() {
 		return this.placeholder_id;
+	},
+	/**
+	 * Get a Full Calendar Event Object for a given model.
+	 * See http://arshaw.com/fullcalendar/docs/event_data/Event_Object/
+	 */
+	getCalendarEvent: function(model) {
+		if (Ext.isFunction(model.toCalendarEvent)) {
+			var calEvent = model.toCalendarEvent();
+			if (Ext.isDefined(model.persistanceProperty)) {
+				// get raw data
+				return calEvent[calEvent.persistanceProperty];
+			} else {
+				return calEvent;
+			}
+		} else {
+			return model;
+		}
 	},
 	/**
 	 * Apply Fullcalendar widget to panel div
@@ -131,8 +151,37 @@ Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 				// custom callback to prevent the list of draggables getting too big
 				me.clearDraggables();
 			},
+			events: function(start, end, callback) {
+				if (!me.store) {
+					throw 'Must specify a store for events or else override events property';
+				}
+				
+				var processEvents = function(rawEvents) {
+					var calEvents = [];
+					Ext.each(rawEvents, function(item) {
+						calEvents.push(me.getCalendarEvent(item));
+					});
+					
+					callback(calEvents);
+				};
+				
+				if (me.forceStoreLoad || !me.storeLoaded) {
+					me.store.load(function(records, operation, success) {
+						me.storeLoaded = true;
+						processEvents.call(me, records);
+					});
+				} else {
+					processEvents.call(me, me.store.getRange());
+				}
+			},
 			viewDisplay: function(view) {
 				me.viewName = view.name;
+				
+				// force update of events if they've changed
+				if (me.shouldRefetchEvents) {
+					me.fc.fullCalendar('refetchEvents');
+					me.shouldRefetchEvents = false;
+				}
 				
 				me.slots = [];
 				if (me.viewName === 'agendaDay') {

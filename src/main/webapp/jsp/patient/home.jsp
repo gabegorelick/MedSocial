@@ -28,15 +28,6 @@
 	<script src="<c:url value='/js/models/CalendarEvent.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/models/Medication.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/stores/MedicationStore.js'/>" type="text/javascript"></script>
-	
-	<script type="text/javascript"> <%-- this has to be defined after the Medication model --%>
-		<%-- TouchView events don't play nicely with remote stores, so load everything locally --%>
-		MedSocial.stores.userMedicationEvents = new Ext.data.Store({
-			model: 'MedSocial.models.Medication',
-			data: <%= new org.codehaus.jackson.map.ObjectMapper().writeValueAsString(((java.util.Map<?, ?>) request.getAttribute("medications")).values()) %>
-		});
-	</script>
-	
 	<script src="<c:url value='/js/views/patient/PatientViewport.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/views/patient/PatientMedicationList.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/views/patient/PatientMedicationDetail.js'/>" type="text/javascript"></script>
