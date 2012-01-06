@@ -4,12 +4,11 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 	
 	scroll : 'vertical',
 		
-	// TODO pass all client values to fullcalendar 
-		
 	initComponent : function() {
 		var me = this;
 		
-		this.defaultView = this.defaultView || 'month';
+		this.fullCalendar = this.fullCalendar || {};
+		this.fullCalendar.defaultView = this.fullCalendar.defaultView || 'month';
 				
 		// placeholder div for fullcalendar
 		me.html = "<div id=" + me.placeholder_id + "></div>";
@@ -20,7 +19,7 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 			me.applySwipeEvent();
 			
 			// so css fixes get applied
-			me.changeCalendarView(me.defaultView);
+			me.changeCalendarView(me.fullCalendar.defaultView);
 
 			me.scroller.on('scrollstart', function() {
 				me.suspendEvents();
@@ -60,21 +59,21 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 					items : [ {
 						text : 'Month',
 						ui : 'action',
-						pressed : (me.defaultView == "month") ? true : false,
+						pressed : (me.fullCalendar.defaultView == "month") ? true : false,
 						handler : function() {
 							me.changeCalendarView('month'); // TODO scroll to 0 after change
 						}
 					}, {
 						text : 'Week',
 						ui : 'action',
-						pressed : (me.defaultView == "agendaWeek") ? true : false,
+						pressed : (me.fullCalendar.defaultView == "agendaWeek") ? true : false,
 						handler : function() {
 							me.changeCalendarView('agendaWeek');
 						}
 					}, {
 						text : 'Day',
 						ui : 'action',
-						pressed : (me.defaultView == "agendaDay") ? true : false,
+						pressed : (me.fullCalendar.defaultView == "agendaDay") ? true : false,
 						handler : function() {
 							me.changeCalendarView('agendaDay');
 						}
@@ -98,8 +97,6 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 		me.titleComponent = me.titleComponent || me.topToolBar;
 		
 		Ext.FullCalendar.superclass.initComponent.apply(this, arguments);
-		
-		me.fullCalendar = $('#' + me.placeholder_id);
 	},
 	/**
 	 * Get Full Calendar Placeholder Id
@@ -113,18 +110,12 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 	renderFullCalendar : function() {
 		var me = this;
 		
-//		this.eventStore.load();
-		
 		this.draggables = [];
-		this.viewName = this.defaultView;
-		this.ignoreEventClick = false;
+		this.viewName = this.fullCalendar.defaultView;
 		
-		$('#' + me.placeholder_id).fullCalendar({
+		var fullCalendarConfig = Ext.applyIf(me.fullCalendar, {
 			hideHeaders : true, //new property to hide full calendar header
 			editable : false, // drag & drop through sencha, NOT jQuery
-			allDaySlot: false,
-			defaultView: me.defaultView, // not really default view, just switches view immediately after render
-			events : this.calendarEvents,
 			dayClick : function(date, allDay, jsEvent, view) {
 				me.fireEvent('dayclick', date, allDay, jsEvent, view, this);
 			},
@@ -132,40 +123,6 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 				if (!me.isDraggingCalendarEvent()) {
 					me.fireEvent('eventclick', calEvent, jsEvent, view, this);
 				}
-			},
-			eventRender: function(calEvent, element, view) {
-				var fcContent = Ext.DomQuery.selectNode('.fc-content');
-				var region = Ext.util.Region.getRegion(fcContent);
-				
-				// FIXME this only works for day (not month or week)
-				
-				var slot0 = new Ext.Element(Ext.DomQuery.selectNode('.fc-view-agendaDay .fc-slot0 .fc-agenda-axis'));
-				region.top = slot0.getY();
-				region.left = slot0.getWidth() + slot0.getX();
-				
-				// TODO allow scrolling while dragging by dynamically updating region on scroll
-				
-				var draggable = new Ext.util.Draggable(element[0], {
-					constrain: new Ext.ux.ElementRegion(region),
-					listeners: {
-						// listening for offsetchange would give us live updates, but that's
-						// way too expensive TODO check if more efficient in Touch 2.0
-						dragend: function(draggable, offset) {
-							var newTime = me.getTimeForLocation(this.region.left, this.region.top, calEvent.start);
-							if (newTime.valueOf() !== calEvent.start.valueOf) {
-								// updateEvent is very expensive, so avoid it at all costs
-								calEvent.start = newTime;
-								$('#' + me.placeholder_id).fullCalendar('updateEvent', calEvent);
-								
-								// events sometimes have artifacts on the left border after update,
-								// seems to be a Chrome issue, b/c it looks fine in mobile browsers
-							}
-							// FIXME this isn't always triggered on Android (often need to swipe after drag)
-						}
-					}
-				});
-
-				me.draggables.push(draggable);
 			},
 			eventsClear: function() {
 				// custom callback to prevent the list of draggables getting too big
@@ -211,6 +168,45 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 			}
 		});
 		
+		if (this.draggableEvents) {
+			fullCalendarConfig.eventRender = function(calEvent, element, view) {
+				var fcContent = Ext.DomQuery.selectNode('.fc-content');
+				var region = Ext.util.Region.getRegion(fcContent);
+
+				// FIXME this only works for day (not month or week)
+
+				var slot0 = new Ext.Element(Ext.DomQuery.selectNode('.fc-view-agendaDay .fc-slot0 .fc-agenda-axis'));
+				region.top = slot0.getY();
+				region.left = slot0.getWidth() + slot0.getX();
+
+				// TODO allow scrolling while dragging by dynamically updating region on scroll
+
+				var draggable = new Ext.util.Draggable(element[0], {
+					constrain: new Ext.ux.ElementRegion(region),
+					listeners: {
+						// listening for offsetchange would give us live updates, but that's
+						// way too expensive TODO check if more efficient in Touch 2.0
+						dragend: function(draggable, offset) {
+							var newTime = me.getTimeForLocation(this.region.left, this.region.top, calEvent.start);
+							if (newTime.valueOf() !== calEvent.start.valueOf) {
+								// updateEvent is very expensive, so avoid it at all costs
+								calEvent.start = newTime;
+								$('#' + me.placeholder_id).fullCalendar('updateEvent', calEvent);
+
+								// events sometimes have artifacts on the left border after update,
+								// seems to be a Chrome issue, b/c it looks fine in mobile browsers
+							}
+							// FIXME this isn't always triggered on Android (often need to swipe after drag)
+						}
+					}
+				});
+
+				me.draggables.push(draggable);
+			};
+		}
+		
+		$('#' + me.placeholder_id).fullCalendar(fullCalendarConfig);
+				
 		me.changeTitle();
 	},
 	/**

@@ -3,7 +3,11 @@ Ext.namespace('MedSocial.patient');
 MedSocial.views.patient.PatientHome = Ext.extend(Ext.FullCalendar, {
 //	eventStore: MedSocial.stores.userMedicationStore,	
 	
-	defaultView: 'agendaDay',
+	draggableEvents: true,
+	fullCalendar: {
+		defaultView: 'agendaDay',
+		allDaySlot: false
+	},	
 	
 	initComponent: function() {
 		
@@ -14,7 +18,7 @@ MedSocial.views.patient.PatientHome = Ext.extend(Ext.FullCalendar, {
 			calendarEvents.push(calendarEvent[calendarEvent.persistanceProperty]);
 		});
 		
-		this.calendarEvents = calendarEvents;
+		this.fullCalendar.events = calendarEvents;
 		
 		MedSocial.views.patient.PatientHome.superclass.initComponent.apply(this, arguments);
 	},
@@ -22,9 +26,6 @@ MedSocial.views.patient.PatientHome = Ext.extend(Ext.FullCalendar, {
 	// TODO drag & drop support for events
 	
 	listeners : {
-//		dayclick : function(date, allDay, jsEvent, view, fc) {
-//			
-//		},
 		eventclick : function(calEvent, jsEvent, view, fc) {
 			Ext.dispatch({
 				controller: MedSocial.controllers.patient.patientMedicationController,
