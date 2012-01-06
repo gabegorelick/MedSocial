@@ -1,6 +1,6 @@
 Ext.namespace('MedSocial.patient');
 
-MedSocial.views.patient.PatientHome = Ext.extend(Ext.FullCalendar, {
+MedSocial.views.patient.PatientHome = Ext.extend(Ext.ux.FullCalendar, {
 //	eventStore: MedSocial.stores.userMedicationStore,	
 	
 	draggableEvents: true,

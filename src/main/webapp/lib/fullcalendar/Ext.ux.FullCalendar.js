@@ -1,4 +1,4 @@
-Ext.FullCalendar = Ext.extend(Ext.Panel, {
+Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 	// unique id for  fullcalendar placeholder
 	placeholder_id : Ext.id(),
 	
@@ -96,7 +96,7 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 		
 		me.titleComponent = me.titleComponent || me.topToolBar;
 		
-		Ext.FullCalendar.superclass.initComponent.apply(this, arguments);
+		Ext.ux.FullCalendar.superclass.initComponent.apply(this, arguments);
 	},
 	/**
 	 * Get Full Calendar Placeholder Id
@@ -425,7 +425,7 @@ Ext.FullCalendar = Ext.extend(Ext.Panel, {
 
 });
 
-Ext.reg('fullcalendarpanel', Ext.FullCalendar);
+Ext.reg('fullcalendarpanel', Ext.ux.FullCalendar);
 
 /**
  * Element whose only purpose is to contain a custom region returned by getPageBox().

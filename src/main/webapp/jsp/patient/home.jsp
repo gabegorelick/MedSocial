@@ -11,7 +11,7 @@
 		
 	<script src="<c:url value='/lib/fullcalendar/jquery-1.5.2.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/lib/fullcalendar/fullcalendar152/fullcalendar.js'/>" type="text/javascript"></script>
-	<script src="<c:url value='/lib/fullcalendar/Ext.FullCalendar.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/lib/fullcalendar/Ext.ux.FullCalendar.js'/>" type="text/javascript"></script>
 	<link rel="stylesheet" href="<c:url value='/lib/fullcalendar/fullcalendar152/fullcalendar.css'/>" type="text/css">
     <link rel="stylesheet" href="<c:url value='/lib/fullcalendar/extended.css'/>" type="text/css">
     <link rel="stylesheet" href="<c:url value='/lib/fullcalendar/ical.css'/>" type="text/css">
