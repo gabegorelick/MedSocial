@@ -15,6 +15,9 @@ Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 
 		//apply fullcalender when panel is rendered
 		me.on('afterlayout', function() {
+			// cache the element so we don't have to always traverse DOM
+			me.fc = $('#' + me.placeholder_id);			
+			
 			me.renderFullCalendar();
 			me.applySwipeEvent();
 			
@@ -187,11 +190,12 @@ Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 						// listening for offsetchange would give us live updates, but that's
 						// way too expensive TODO check if more efficient in Touch 2.0
 						dragend: function(draggable, offset) {
+							// TODO use center of region instead of corner
 							var newTime = me.getTimeForLocation(this.region.left, this.region.top, calEvent.start);
 							if (newTime.valueOf() !== calEvent.start.valueOf) {
 								// updateEvent is very expensive, so avoid it at all costs
 								calEvent.start = newTime;
-								$('#' + me.placeholder_id).fullCalendar('updateEvent', calEvent);
+								me.fc.fullCalendar('updateEvent', calEvent);
 
 								// events sometimes have artifacts on the left border after update,
 								// seems to be a Chrome issue, b/c it looks fine in mobile browsers
@@ -205,7 +209,7 @@ Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 			};
 		}
 		
-		$('#' + me.placeholder_id).fullCalendar(fullCalendarConfig);
+		me.fc.fullCalendar(fullCalendarConfig);
 				
 		me.changeTitle();
 	},
@@ -295,7 +299,7 @@ Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 		var day = dayElement.query('.fc-day-number')[0].innerText;
 
 		// get month
-		var month = $('#' + this.placeholder_id).fullCalendar('getDate').getMonth();
+		var month = this.fc.fullCalendar('getDate').getMonth();
 		if (/fc-other-month/.test(dayElement.dom.className)) {
 			// in another month on this calendar
 			if (/fc-week0/.test(week.dom.className)) {
@@ -338,7 +342,7 @@ Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 	changeCalendarView : function(view) {
 		var me = this;
 		
-		$('#' + me.placeholder_id).fullCalendar('changeView', view);
+		this.fc.fullCalendar('changeView', view);
 
 		// to fix issue regarding the scroll area of week and day not taking full height. 
 		if (view == "month") {
@@ -370,14 +374,14 @@ Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 		me.changeTitle();
 	},
 	viewToday : function() {
-		$('#' + this.placeholder_id).fullCalendar('today');
+		this.fc.fullCalendar('today');
 		this.changeTitle();
 	},
 	navigateCalendar : function(direction) {
 		if (direction == "left") {
-			$('#' + this.placeholder_id).fullCalendar('prev');
+			this.fc.fullCalendar('prev');
 		} else if (direction == "right") {
-			$('#' + this.placeholder_id).fullCalendar('next');
+			this.fc.fullCalendar('next');
 		}
 		this.changeTitle();
 	},
@@ -419,7 +423,7 @@ Ext.ux.FullCalendar = Ext.extend(Ext.Panel, {
 	changeTitle : function() {
 		var me = this;
 		if (me.titleComponent) {
-			me.titleComponent.setTitle($('#' + me.placeholder_id).fullCalendar('getView').title);
+			me.titleComponent.setTitle(this.fc.fullCalendar('getView').title);
 		}
 	}
 
