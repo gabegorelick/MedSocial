@@ -3,3 +3,17 @@
 	-webkit-box-sizing: content-box;
 	box-sizing: content-box;
 }
+
+.doctorList-doctor-box {
+	height: 120px;
+	margin: 0 0 0 5px;
+	padding: 5px;
+	border: 1px solid;
+	border-radius: 10px; /* TODO make this pretty */
+}
+
+.doctorList-doctor-box .doctor-thumbnail {
+	width: 100px;
+	height: 100px;
+	float: left;
+}

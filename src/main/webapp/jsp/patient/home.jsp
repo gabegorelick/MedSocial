@@ -25,6 +25,7 @@
 		MedSocial.userId = '18580476422013912411'; <%-- TODO get from model --%>
 	</script>
 	
+	<%-- TODO compress all JS together --%>
 	<script src="<c:url value='/js/models/CalendarEvent.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/models/Medication.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/stores/MedicationStore.js'/>" type="text/javascript"></script>
@@ -33,6 +34,7 @@
 	<script src="<c:url value='/js/views/patient/PatientMedicationDetail.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/views/patient/PatientEditMedication.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/views/patient/PatientHome.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/js/views/patient/DoctorList.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/controllers/patient/app.js'/>" type="text/javascript"></script>
 	<script src="<c:url value='/js/controllers/patient/patientMedicationController.js'/>" type="text/javascript"></script>
 	

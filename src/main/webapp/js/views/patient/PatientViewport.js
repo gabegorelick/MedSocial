@@ -29,8 +29,9 @@ MedSocial.views.patient.PatientViewport = Ext.extend(Ext.Panel, {
 					items: [new MedSocial.views.patient.PatientMedicationList()]
 				}, {
 					title: 'Doctors',
-					html: 'Doctors page goes here',
-					iconCls: 'user'
+					iconCls: 'user',
+					badgeText: '1', // TODO get from server
+					items: [new MedSocial.views.patient.DoctorList()]
 				}, {
 					title: 'Notes',
 					html: 'Notes page goes here',

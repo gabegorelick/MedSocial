@@ -83,4 +83,9 @@ public class PatientController {
 		return medication;
 	}
 	
+	@RequestMapping(value = "/{userId}/doctors", method = RequestMethod.GET, headers = {"Accept=text/html"})
+	public String getDoctorsPage() {
+		return "patient/doctorList";
+	}
+	
 }
