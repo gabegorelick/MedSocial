@@ -1,0 +1,3 @@
+[submodule "src/main/webapp/lib/fullcalendar"]
+	path = src/main/webapp/lib/fullcalendar
+	url = git://github.com/gabegorelick/fullcalendar.git
