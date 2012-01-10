@@ -9,12 +9,12 @@
 	
 	<%-- TODO use minified versions of everything when we're done debugging --%>
 		
-	<script src="<c:url value='/lib/fullcalendar/dist/fullcalendar-1.5.2/jquery/jquery-1.7.min.js'/>" type="text/javascript"></script>
-	<script src="<c:url value='/lib/fullcalendar/dist/fullcalendar-1.5.2/fullcalendar/fullcalendar.min.js'/>" type="text/javascript"></script>
-	<script src="<c:url value='/lib/fullcalendar/touch/Ext.ux.FullCalendar.js'/>" type="text/javascript"></script>
-	<link rel="stylesheet" href="<c:url value='/lib/fullcalendar/dist/fullcalendar-1.5.2/fullcalendar/fullcalendar.css'/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value='/lib/fullcalendar/touch/extended.css'/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value='/lib/fullcalendar/touch/ical.css'/>" type="text/css">
+	<script src="<c:url value='/lib/fullcalendar/jquery-1.7.min.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/lib/fullcalendar/fullcalendar.min.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/lib/fullcalendar/Ext.ux.FullCalendar.js'/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value='/lib/fullcalendar/fullcalendar.css'/>" type="text/css">
+    <link rel="stylesheet" href="<c:url value='/lib/fullcalendar/extended.css'/>" type="text/css">
+    <link rel="stylesheet" href="<c:url value='/lib/fullcalendar/ical.css'/>" type="text/css">
 	
 	<script src="<c:url value='/js/overrides.js'/>" type="text/javascript"></script>
 	
