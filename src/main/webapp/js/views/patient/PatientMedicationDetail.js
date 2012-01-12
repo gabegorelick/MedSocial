@@ -76,7 +76,15 @@ MedSocial.views.patient.PatientMedicationDetail = Ext.extend(Ext.form.FormPanel,
 				xtype: 'datepickerfield',
 				name: 'end',
 				label: 'End date',
-				value: this.record.data.end
+				value: this.record.get('end')
+			}, {
+				xtype: 'timepickerfield',
+				name: 'alertTime',
+				label: 'Alert time',
+				value: {
+					hour: this.record.get('alertTime').getHours(),
+					minute: this.record.get('alertTime').getMinutes()
+				}
 			}]
 		});
 		

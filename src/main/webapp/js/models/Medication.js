@@ -18,6 +18,13 @@ MedSocial.models.Medication = Ext.regModel('MedSocial.models.Medication', {
 		name: 'end',
 		type: 'date',
 		dateFormat: 'U'
+	}, {
+		name: 'alertTime',
+		type: 'date',
+		dateFormat: 'H:i:s.u'
+	}, {
+		name: 'repeatAlert',
+		type: 'auto'
 	}],
 
 	toCalendarEvent: function() {

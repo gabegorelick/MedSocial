@@ -5,10 +5,13 @@ import java.util.Date;
 import javax.persistence.Entity;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.map.ser.std.ToStringSerializer;
+import org.joda.time.LocalTime;
+import org.joda.time.Partial;
 import org.springframework.security.core.userdetails.User;
 
-import com.medsocial.web.JsonDateSerializer;
 
 @Entity
 public class Medication {
@@ -17,11 +20,19 @@ public class Medication {
 	private String name;
 	private String directions;
 	
-	@JsonSerialize(using = JsonDateSerializer.class)
+	@JsonSerialize(using = DateJsonSerializer.class)
 	private Date start;
 	
-	@JsonSerialize(using = JsonDateSerializer.class)
+	@JsonSerialize(using = DateJsonSerializer.class)
 	private Date end;
+	
+	@JsonSerialize(using = ToStringSerializer.class)
+	@JsonDeserialize(using = LocalTimeJsonDeserializer.class)
+	private LocalTime alertTime;
+	
+	@JsonSerialize(contentUsing = PartialJsonSerializer.class)
+	private Partial[] repeatAlert;
+	
 	
 	@JsonIgnore
 	private User user;
@@ -73,6 +84,21 @@ public class Medication {
 	public void setEnd(Date end) {
 		this.end = end;
 	}
-	
-	
+
+	public LocalTime getAlertTime() {
+		return alertTime;
+	}
+
+	public void setAlertTime(LocalTime alertTime) {
+		this.alertTime = alertTime;
+	}
+
+	public Partial[] getRepeatAlert() {
+		return repeatAlert;
+	}
+
+	public void setRepeatAlert(Partial[] repeatAlert) {
+		this.repeatAlert = repeatAlert;
+	}
+		
 }

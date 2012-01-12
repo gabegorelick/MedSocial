@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.joda.time.DateTimeConstants;
+import org.joda.time.DateTimeFieldType;
+import org.joda.time.LocalTime;
+import org.joda.time.Partial;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -47,6 +51,9 @@ public class PatientController {
 		m1.setDirections("Take once a day");
 		m1.setStart(new Date());
 		m1.setEnd(new Date());
+		m1.setAlertTime(new LocalTime(8, 00));
+		Partial everyMonday = new Partial().with(DateTimeFieldType.dayOfWeek(), DateTimeConstants.MONDAY);
+		m1.setRepeatAlert(new Partial[]{everyMonday});
 		medications.put(m1.getId(), m1);
 		
 		Medication m2 = new Medication();
@@ -55,6 +62,9 @@ public class PatientController {
 		m2.setDirections("Take one pill every hour");
 		m2.setStart(new Date());
 		m2.setEnd(new Date());
+		m2.setAlertTime(new LocalTime(10, 30));
+		m1.setRepeatAlert(new Partial[]{new Partial().with(DateTimeFieldType.dayOfWeek(), DateTimeConstants.WEDNESDAY),
+				new Partial().with(DateTimeFieldType.dayOfWeek(), DateTimeConstants.SATURDAY)});		
 		medications.put(m2.getId(), m2);
 		
 		return medications;

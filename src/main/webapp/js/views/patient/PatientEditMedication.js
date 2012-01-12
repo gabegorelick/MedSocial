@@ -30,6 +30,11 @@ MedSocial.views.patient.PatientEditMedication = Ext.extend(MedSocial.views.patie
 					scope: this,
 					tap: function() {
 						this.updateRecord(this.record, true);
+						
+						// TimePicker stores everything as strings, so manually convert to Date
+						this.record.set('alertTime', Date.parseDate(this.getValues()['alertTime'], 'H:i'));
+						
+						this.record.set('repeatAlert', []);
 												
 						// don't use model.save() since that uses model's implicit proxy
 						this.record.store.sync();

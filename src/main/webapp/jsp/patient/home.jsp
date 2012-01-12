@@ -15,6 +15,9 @@
 	<link rel="stylesheet" href="<c:url value='/lib/fullcalendar/fullcalendar.css'/>" type="text/css">
     <link rel="stylesheet" href="<c:url value='/lib/fullcalendar/extended.css'/>" type="text/css">
     <link rel="stylesheet" href="<c:url value='/lib/fullcalendar/ical.css'/>" type="text/css">
+    
+    <script src="<c:url value='/lib/timepicker/Ext.ux.TimePicker.js'/>" type="text/javascript"></script>
+    <script src="<c:url value='/lib/timepicker/Ext.ux.form.TimePicker.js'/>" type="text/javascript"></script>
 	
 	<script src="<c:url value='/js/overrides.js'/>" type="text/javascript"></script>
 	
