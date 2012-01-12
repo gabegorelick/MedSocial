@@ -30,6 +30,15 @@
     	<url-pattern>/</url-pattern>
     </servlet-mapping>
     
+    <filter>
+    	<filter-name>etagFilter</filter-name>
+    	<filter-class>org.springframework.web.filter.ShallowEtagHeaderFilter</filter-class>
+    </filter>
+    <filter-mapping>
+    	<filter-name>etagFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
     <!-- Turn off Spring Security for now while we migrate away from GAE -->
     <!-- <filter>
     	<filter-name>springSecurityFilterChain</filter-name>
