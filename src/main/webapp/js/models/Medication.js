@@ -1,5 +1,12 @@
 Ext.namespace('MedSocial.models');
 
+Ext.regModel('MedSocial.models.AlertRepetition', {
+	fields: [{
+		name: 'day'
+	}],
+	belongsTo: ['MedSocial.models.Medication']
+});
+
 MedSocial.models.Medication = Ext.regModel('MedSocial.models.Medication', {
 	fields: [{
 		name: 'id',
@@ -22,10 +29,12 @@ MedSocial.models.Medication = Ext.regModel('MedSocial.models.Medication', {
 		name: 'alertTime',
 		type: 'date',
 		dateFormat: 'H:i:s.u'
-	}, {
-		name: 'repeatAlert',
-		type: 'auto'
 	}],
+	
+	hasMany: {
+		model: 'MedSocial.models.AlertRepetition',
+		name: 'alertRepetitions'
+	},
 
 	toCalendarEvent: function() {
 		var me = this;

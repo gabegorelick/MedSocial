@@ -31,7 +31,8 @@ public class Medication {
 	private LocalTime alertTime;
 	
 	@JsonSerialize(contentUsing = PartialJsonSerializer.class)
-	private Partial[] repeatAlert;
+	@JsonDeserialize(contentUsing = PartialJsonDeserialier.class)
+	private Partial[] alertRepetitions;
 	
 	
 	@JsonIgnore
@@ -93,12 +94,12 @@ public class Medication {
 		this.alertTime = alertTime;
 	}
 
-	public Partial[] getRepeatAlert() {
-		return repeatAlert;
+	public Partial[] getAlertRepetitions() {
+		return alertRepetitions;
 	}
 
-	public void setRepeatAlert(Partial[] repeatAlert) {
-		this.repeatAlert = repeatAlert;
+	public void setAlertRepetitions(Partial[] repeatAlert) {
+		this.alertRepetitions = repeatAlert;
 	}
 		
 }

@@ -18,6 +18,9 @@
     
     <script src="<c:url value='/lib/timepicker/Ext.ux.TimePicker.js'/>" type="text/javascript"></script>
     <script src="<c:url value='/lib/timepicker/Ext.ux.form.TimePicker.js'/>" type="text/javascript"></script>
+    
+    <script src="<c:url value='/lib/multiselect/Ext.form.ux.touch.MultiSelect.js'/>" type="text/javascript"></script>
+    <link rel="stylesheet" href="<c:url value='/lib/multiselect/Ext.form.ux.touch.MultiSelect.css'/>" type="text/css">
 	
 	<script src="<c:url value='/js/overrides.js'/>" type="text/javascript"></script>
 	

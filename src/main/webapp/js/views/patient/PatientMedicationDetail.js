@@ -9,6 +9,8 @@ MedSocial.views.patient.PatientMedicationDetail = Ext.extend(Ext.form.FormPanel,
 	},
 	
 	initComponent: function() {
+		var me = this;
+		
 		Ext.applyIf(this, {
 			leftButton: {
 				text: 'Back',
@@ -56,44 +58,80 @@ MedSocial.views.patient.PatientMedicationDetail = Ext.extend(Ext.form.FormPanel,
 				}, this.rightButton]
 			}],
 			styleHtmlContent: true,
-			scroll: 'vertical',
-			items: [{
-				xtype: 'textfield',
-				name: 'name',
-				label: 'Name',
-				value: this.record.data.name
-			}, {
-				xtype: 'textareafield',
-				name: 'directions',
-				label: 'Directions',
-				value: this.record.data.directions
-			}, {
-				xtype: 'datepickerfield',
-				name: 'start',
-				label: 'Start date',
-				value: this.record.data.start
-			}, {
-				xtype: 'datepickerfield',
-				name: 'end',
-				label: 'End date',
-				value: this.record.get('end')
-			}, {
-				xtype: 'timepickerfield',
-				name: 'alertTime',
-				label: 'Alert time',
-				value: {
-					hour: this.record.get('alertTime').getHours(),
-					minute: this.record.get('alertTime').getMinutes()
-				}
-			}]
+			scroll: 'vertical'
+		});
+		
+		var items = [{
+			xtype: 'textfield', // TODO tap field to edit instead of having to tap "Edit" button
+			name: 'name',
+			label: 'Name',
+			value: this.record.get('name')
+		}, {
+			xtype: 'textareafield',
+			name: 'directions',
+			label: 'Directions',
+			value: this.record.get('directions')
+		}, {
+			xtype: 'datepickerfield',
+			name: 'start',
+			label: 'Start date',
+			value: this.record.get('start')
+		}, {
+			xtype: 'datepickerfield',
+			name: 'end',
+			label: 'End date',
+			value: this.record.get('end')
+		}, {
+			xtype: 'timepickerfield',
+			name: 'alertTime',
+			label: 'Alert time',
+			value: {
+				hour: this.record.get('alertTime').getHours(),
+				minute: this.record.get('alertTime').getMinutes()
+			}
+		}, {
+			xtype: 'multiselectfield',
+			name: 'alertRepetitions',
+			label: 'Repeat alert',
+			itemType: 'list',
+			value: (function() {
+				var result = [];
+				me.record.alertRepetitions().each(function(rec) {
+					result.push(rec.get('day'));
+				});
+				return result;
+			})(),
+			displayField: 'day',
+			valueField: 'day',
+			store: new Ext.data.Store({
+				model: Ext.regModel('DayOfWeek', {
+					fields: [{
+						name: 'day',
+						type: 'string'
+					}]
+				}),
+				data: [{
+					day: 'Sun'
+				}, {
+					day: 'Mon'
+				}, {
+					day: 'Tue'
+				}, {
+					day: 'Wed'
+				}, {
+					day: 'Thu'
+				}, {
+					day: 'Fri'
+				}, {
+					day: 'Sat'
+				}]
+			})
+		}];
+		
+		Ext.applyIf(this, {
+			items: items
 		});
 		
 		MedSocial.views.patient.PatientMedicationDetail.superclass.initComponent.apply(this, arguments);
-	},
-	
-	setEditable: function(editable) {
-		Ext.each(this.items.items, function(item) {
-			item.setDisabled(!editable);
-		});		
-	}	
+	}
 });

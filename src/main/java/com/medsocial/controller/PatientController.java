@@ -53,7 +53,7 @@ public class PatientController {
 		m1.setEnd(new Date());
 		m1.setAlertTime(new LocalTime(8, 00));
 		Partial everyMonday = new Partial().with(DateTimeFieldType.dayOfWeek(), DateTimeConstants.MONDAY);
-		m1.setRepeatAlert(new Partial[]{everyMonday});
+		m1.setAlertRepetitions(new Partial[]{everyMonday});
 		medications.put(m1.getId(), m1);
 		
 		Medication m2 = new Medication();
@@ -63,7 +63,7 @@ public class PatientController {
 		m2.setStart(new Date());
 		m2.setEnd(new Date());
 		m2.setAlertTime(new LocalTime(10, 30));
-		m1.setRepeatAlert(new Partial[]{new Partial().with(DateTimeFieldType.dayOfWeek(), DateTimeConstants.WEDNESDAY),
+		m2.setAlertRepetitions(new Partial[]{new Partial().with(DateTimeFieldType.dayOfWeek(), DateTimeConstants.WEDNESDAY),
 				new Partial().with(DateTimeFieldType.dayOfWeek(), DateTimeConstants.SATURDAY)});		
 		medications.put(m2.getId(), m2);
 		

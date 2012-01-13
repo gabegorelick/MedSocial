@@ -185,7 +185,11 @@ Ext.form.ux.touch.MultiSelect = Ext.extend(Ext.form.Select, {
             if (typeof value === "string") {
                 values = value.split(delimiter);
             } else {
-                values = [value];
+                if (Ext.isArray(value)) {
+                	values = value;
+                } else {
+                	values = [value];
+                }
             }
 
             vNum = values.length;
